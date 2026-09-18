@@ -3,37 +3,48 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="mUczen.MainPage"
              Shell.NavBarIsVisible="False">
-    <!--
-    Colors:
-    
-    Charcoal Brown #363732
-    Cerulean #007EA7
-    Porcelain #F1F5F2
-    -->
-    <VerticalStackLayout Spacing="5" Padding="5" BackgroundColor="#F1F5F2">
-        <VerticalStackLayout>
-            <!--PLACEHOLDER--><Image Source="student_logo_placeholder.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center"/>
+    <Grid BackgroundColor="{StaticResource Porcelain}"
+          RowDefinitions="*,Auto">
+
+        <!-- TOP -->
+        <VerticalStackLayout
+            Grid.Row="0"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Spacing="20">
+
+            <Image
+                Source="student_logo_placeholder.png"
+                HeightRequest="300"
+                WidthRequest="300"
+                HorizontalOptions="Center"/>
             <Label
                 Text="mUczeń"
-                SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                TextColor="{StaticResource CharcoalBrown}"/>
         </VerticalStackLayout>
-        
-        <VerticalStackLayout Spacing="10" VerticalOptions="End" HorizontalOptions="Center">
+
+        <!-- BOTTOM -->
+        <VerticalStackLayout
+            Grid.Row="1"
+            Spacing="10"
+            Padding="20"
+            HorizontalOptions="Center">
             <Button
                 Text="Zaloguj się"
-                BackgroundColor="#007EA7"
+                BackgroundColor="{StaticResource Cerulean}"
                 CornerRadius="10"
                 WidthRequest="300"/>
             <Button
                 Text="Utwórz konto"
-                BorderColor="#363732"
+                BorderColor="{StaticResource CharcoalBrown}"
                 BorderWidth="1"
-                BackgroundColor="#F1F5F2"
+                BackgroundColor="{StaticResource Porcelain}"
                 CornerRadius="10"
                 WidthRequest="300"
-                TextColor="#363732"/>
+                TextColor="{StaticResource CharcoalBrown}"/>
         </VerticalStackLayout>
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>
+    
