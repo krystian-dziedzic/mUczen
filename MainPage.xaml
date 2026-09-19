@@ -12,8 +12,8 @@
             VerticalOptions="Center"
             HorizontalOptions="Center"
             Spacing="20">
-
-            <Image
+            <!-- PLACEHOLDER IMAGE -->
+            <Image x:Name="Logo" Loaded="Animate_Logo" 
                 Source="student_logo_placeholder.png"
                 HeightRequest="300"
                 WidthRequest="300"
@@ -21,6 +21,7 @@
             <Label
                 Text="mUczeń"
                 FontSize="32"
+                FontAttributes="Bold"
                 HorizontalOptions="Center"
                 TextColor="{StaticResource CharcoalBrown}"/>
         </VerticalStackLayout>
@@ -31,7 +32,7 @@
             Spacing="10"
             Padding="20"
             HorizontalOptions="Center">
-            <Button
+            <Button x:Name="LoginButton"
                 Text="Zaloguj się"
                 BackgroundColor="{StaticResource Cerulean}"
                 CornerRadius="10"
