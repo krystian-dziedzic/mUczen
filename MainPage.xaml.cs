@@ -2,23 +2,18 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object? sender, EventArgs e)
+        private async void Animate_Logo(object sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-        }
+            while(true)
+            {
+                await Logo.ScaleToAsync(1.15, 800);
+                await Logo.ScaleToAsync(1.0, 800);
+            }
+        }   
     }
 }
