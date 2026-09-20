@@ -4,7 +4,7 @@
              x:Class="mUczen.MainPage"
              Shell.NavBarIsVisible="False">
     <Grid BackgroundColor="{StaticResource Porcelain}"
-          RowDefinitions="*,Auto">
+          RowDefinitions="*,Auto,Auto">
 
         <!-- TOP -->
         <VerticalStackLayout
@@ -25,10 +25,32 @@
                 HorizontalOptions="Center"
                 TextColor="{StaticResource CharcoalBrown}"/>
         </VerticalStackLayout>
+        
+        <!-- LOGIN POPUP -->
+        <VerticalStackLayout x:Name="LoginPopup" IsVisible="Hidden"
+            Grid.Row="1"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Spacing="20">
+            <BoxView 
+                Color="{StaticResource Porcelain}"
+                CornerRadius="20"
+                WidthRequest="300"
+                HeightRequest="400"
+                HorizontalOptions="Center">
+            </BoxView>
+            <Label
+                Text="Witaj w aplikacji mUczeń!"
+                FontSize="24"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TextColor="{StaticResource CharcoalBrown}"/>
 
+        </VerticalStackLayout>
+        
         <!-- BOTTOM -->
         <VerticalStackLayout
-            Grid.Row="1"
+            Grid.Row="2"
             Spacing="10"
             Padding="20"
             HorizontalOptions="Center">
@@ -36,7 +58,8 @@
                 Text="Zaloguj się"
                 BackgroundColor="{StaticResource Cerulean}"
                 CornerRadius="10"
-                WidthRequest="300"/>
+                WidthRequest="300"
+                Clicked="DisplayLoginPopup"/>
             <Button
                 Text="Utwórz konto"
                 BorderColor="{StaticResource CharcoalBrown}"
