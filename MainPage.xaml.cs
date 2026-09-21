@@ -2,6 +2,7 @@
 {
     public partial class MainPage : ContentPage
     {
+        private bool isPopupVisible = false;
         public MainPage()
         {
             InitializeComponent();
@@ -17,7 +18,13 @@
         }
         private void DisplayLoginPopup(object sender, EventArgs e)
         {
-            LoginPopup.IsVisible = true;
+            if (!isPopupVisible)
+            {
+                isPopupVisible = true;
+                LoginPopup.IsVisible = true;
+            }
+            //Chce zrobic animacje "wysuwania" popupu i takiego jakby przemieszczenia się loga na ten popup
+            //Ale nie mam juz dzisiaj czasu więc to dla jutrzejszego mnie ;)
         }
     }
 }

@@ -4,7 +4,8 @@
              x:Class="mUczen.MainPage"
              Shell.NavBarIsVisible="False">
     <Grid BackgroundColor="{StaticResource Porcelain}"
-          RowDefinitions="*,Auto,Auto">
+          RowDefinitions="*,Auto,Auto"
+          x:Name="MainGrid">
 
         <!-- TOP -->
         <VerticalStackLayout
@@ -32,19 +33,18 @@
             VerticalOptions="Center"
             HorizontalOptions="Center"
             Spacing="20">
-            <BoxView 
-                Color="{StaticResource Porcelain}"
-                CornerRadius="20"
+            <Border BackgroundColor="{StaticResource Porcelain}"            
                 WidthRequest="300"
                 HeightRequest="400"
                 HorizontalOptions="Center">
-            </BoxView>
-            <Label
-                Text="Witaj w aplikacji mUczeń!"
-                FontSize="24"
-                FontAttributes="Bold"
-                HorizontalOptions="Center"
-                TextColor="{StaticResource CharcoalBrown}"/>
+                <Label
+                    Text="Witaj w aplikacji mUczeń!"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    TextColor="{StaticResource CharcoalBrown}"/>
+            </Border>
+
 
         </VerticalStackLayout>
         
