@@ -3,72 +3,156 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="mUczen.MainPage"
              Shell.NavBarIsVisible="False">
+
     <Grid BackgroundColor="{StaticResource Porcelain}"
           RowDefinitions="*,Auto,Auto"
           x:Name="MainGrid">
+
+        <!-- DEKORACJE TŁA -->
+        <Ellipse
+            WidthRequest="180"
+            HeightRequest="180"
+            Fill="{StaticResource Cerulean}"
+            Opacity="0.08"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            Margin="-70,-50,0,0"/>
+        <Ellipse
+            WidthRequest="130"
+            HeightRequest="130"
+            Fill="{StaticResource Cerulean}"
+            Opacity="0.06"
+            HorizontalOptions="End"
+            VerticalOptions="End"
+            Margin="0,0,-40,-30"/>
 
         <!-- TOP -->
         <VerticalStackLayout
             Grid.Row="0"
             VerticalOptions="Center"
             HorizontalOptions="Center"
-            Spacing="20">
-            <!-- PLACEHOLDER IMAGE -->
-            <Image x:Name="Logo" Loaded="Animate_Logo" 
-                Source="student_logo_placeholder.png"
-                HeightRequest="300"
-                WidthRequest="300"
-                HorizontalOptions="Center"/>
+            Spacing="12">
+            <!-- LOGO -->
+            <Border
+                BackgroundColor="White"
+                StrokeThickness="0"
+                Padding="18"
+                WidthRequest="220"
+                HeightRequest="220"
+                HorizontalOptions="Center">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="110"/>
+                </Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Opacity="0.10"
+                        Radius="20"
+                        Offset="0,8"/>
+                </Border.Shadow>
+                <Image
+                    x:Name="Logo"
+                    Loaded="Animate_Logo"
+                    Source="student_logo_placeholder.png"
+                    Aspect="AspectFit"/>
+            </Border>
             <Label
                 Text="mUczeń"
-                FontSize="32"
+                FontSize="34"
                 FontAttributes="Bold"
                 HorizontalOptions="Center"
                 TextColor="{StaticResource CharcoalBrown}"/>
+            <Label
+                Text="Twoja nauka. W jednym miejscu."
+                FontSize="15"
+                HorizontalOptions="Center"
+                TextColor="{StaticResource CharcoalBrown}"
+                Opacity="0.65"/>
         </VerticalStackLayout>
-        
+
         <!-- LOGIN POPUP -->
-        <VerticalStackLayout x:Name="LoginPopup" IsVisible="Hidden"
+        <Border
             Grid.Row="1"
-            VerticalOptions="Center"
-            HorizontalOptions="Center"
-            Spacing="20">
-            <Border BackgroundColor="{StaticResource Porcelain}"            
-                WidthRequest="300"
-                HeightRequest="400"
-                HorizontalOptions="Center">
+            x:Name="LoginPopup"
+            BackgroundColor="{StaticResource Cerulean}"
+            Padding="20"
+            Margin="20,0"
+            IsVisible="False"
+            HorizontalOptions="Center">
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="18"/>
+            </Border.StrokeShape>
+
+            <Border.Shadow>
+                <Shadow
+                    Brush="Black"
+                    Opacity="0.15"
+                    Radius="15"
+                    Offset="0,6"/>
+            </Border.Shadow>
+
+            <VerticalStackLayout Spacing="12">
                 <Label
-                    Text="Witaj w aplikacji mUczeń!"
+                    Text="Zaloguj się"
                     FontSize="24"
                     FontAttributes="Bold"
-                    HorizontalOptions="Center"
+                    HorizontalOptions="Center"/>
+                <Entry
+                    x:Name="UsernameEntry"
+                    Placeholder="Nazwa użytkownika"
+                    BackgroundColor="White"/>
+                <Entry
+                    x:Name="PasswordEntry"
+                    Placeholder="Hasło"
+                    IsPassword="True"
+                    BackgroundColor="White"/>
+                <Button
+                    Text="Zaloguj się"
+                    BackgroundColor="{StaticResource Porcelain}"
+                    CornerRadius="10"
+                    Clicked="LoginButtonClicked"
                     TextColor="{StaticResource CharcoalBrown}"/>
-            </Border>
+            </VerticalStackLayout>
+        </Border>
 
-
-        </VerticalStackLayout>
-        
         <!-- BOTTOM -->
         <VerticalStackLayout
             Grid.Row="2"
-            Spacing="10"
-            Padding="20"
+            Spacing="12"
+            Padding="20,15,20,30"
             HorizontalOptions="Center">
-            <Button x:Name="LoginButton"
+
+            <Button
+                x:Name="LoginButton"
                 Text="Zaloguj się"
                 BackgroundColor="{StaticResource Cerulean}"
-                CornerRadius="10"
+                CornerRadius="12"
                 WidthRequest="300"
+                HeightRequest="52"
+                FontSize="16"
+                FontAttributes="Bold"
                 Clicked="DisplayLoginPopup"/>
+
             <Button
                 Text="Utwórz konto"
                 BorderColor="{StaticResource CharcoalBrown}"
                 BorderWidth="1"
-                BackgroundColor="{StaticResource Porcelain}"
-                CornerRadius="10"
+                BackgroundColor="Transparent"
+                CornerRadius="12"
                 WidthRequest="300"
+                HeightRequest="52"
+                FontSize="16"
                 TextColor="{StaticResource CharcoalBrown}"/>
+
+            <Label
+                Text="© 2026 mUczeń"
+                FontSize="11"
+                HorizontalOptions="Center"
+                TextColor="{StaticResource CharcoalBrown}"
+                Opacity="0.4"
+                Margin="0,5,0,0"/>
+
         </VerticalStackLayout>
     </Grid>
 </ContentPage>
-    
