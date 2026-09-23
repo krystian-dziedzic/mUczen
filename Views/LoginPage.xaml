@@ -69,52 +69,6 @@
                 Opacity="0.65"/>
         </VerticalStackLayout>
 
-        <!-- LOGIN POPUP -->
-        <Border
-            Grid.Row="1"
-            x:Name="LoginPopup"
-            BackgroundColor="{StaticResource Cerulean}"
-            Padding="20"
-            Margin="20,0"
-            IsVisible="False"
-            HorizontalOptions="Center">
-
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="18"/>
-            </Border.StrokeShape>
-
-            <Border.Shadow>
-                <Shadow
-                    Brush="Black"
-                    Opacity="0.15"
-                    Radius="15"
-                    Offset="0,6"/>
-            </Border.Shadow>
-
-            <VerticalStackLayout Spacing="12">
-                <Label
-                    Text="Zaloguj się"
-                    FontSize="24"
-                    FontAttributes="Bold"
-                    HorizontalOptions="Center"/>
-                <Entry
-                    x:Name="UsernameEntry"
-                    Placeholder="Nazwa użytkownika"
-                    BackgroundColor="White"/>
-                <Entry
-                    x:Name="PasswordEntry"
-                    Placeholder="Hasło"
-                    IsPassword="True"
-                    BackgroundColor="White"/>
-                <Button
-                    Text="Zaloguj się"
-                    BackgroundColor="{StaticResource Porcelain}"
-                    CornerRadius="10"
-                    Clicked="LoginButtonClicked"
-                    TextColor="{StaticResource CharcoalBrown}"/>
-            </VerticalStackLayout>
-        </Border>
-
         <!-- BOTTOM -->
         <VerticalStackLayout
             Grid.Row="2"
@@ -153,5 +107,90 @@
                 Margin="0,5,0,0"/>
 
         </VerticalStackLayout>
+
+        <!-- LOGIN POPUP -->
+        <Border
+            Grid.RowSpan="3"
+            x:Name="LoginPopup"
+            BackgroundColor="{StaticResource Cerulean}"
+            Padding="20"
+            IsVisible="False"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
+            StrokeThickness="0">
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="18"/>
+            </Border.StrokeShape>
+
+            <Border.Shadow>
+                <Shadow
+                    Brush="Black"
+                    Opacity="0.15"
+                    Radius="15"
+                    Offset="0,6"/>
+            </Border.Shadow>
+
+            <VerticalStackLayout Spacing="12" VerticalOptions="Center">
+                <Label
+                    Text="Zaloguj się"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    Margin="0, 0, 0, 15"
+                    HorizontalOptions="Center"/>
+                <Border
+                    WidthRequest="300"
+                    HeightRequest="52"
+                    BackgroundColor="White"
+                    StrokeThickness="0">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12"/>
+                    </Border.StrokeShape>
+
+                    <Entry
+                        x:Name="UsernameEntry"
+                        PlaceholderColor="Grey"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Placeholder="Nazwa użytkownika"
+                        BackgroundColor="Transparent"
+                        TextColor="Black"
+                        Margin="8,0"/>
+                </Border>
+                
+                <Border
+                    WidthRequest="300"
+                    HeightRequest="52"
+                    BackgroundColor="White"
+                    StrokeThickness="0">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12"/>
+                    </Border.StrokeShape>
+
+                    <Entry
+                        x:Name="PasswordEntry"
+                        PlaceholderColor="Grey"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Placeholder="Hasło"
+                        IsPassword="True"
+                        BackgroundColor="Transparent"
+                        TextColor="Black"
+                        Margin="8,0"/>
+                </Border>
+                <Button
+                    Text="Zaloguj się"
+                    BackgroundColor="{StaticResource Porcelain}"
+                    BorderColor="{StaticResource CharcoalBrown}"
+                    TextColor="{StaticResource CharcoalBrown}"
+                    BorderWidth="1"
+                    CornerRadius="10"
+                    WidthRequest="300"
+                    HeightRequest="52"
+                    Clicked="LoginButtonClicked"/>
+            </VerticalStackLayout>
+        </Border>
     </Grid>
 </ContentPage>
