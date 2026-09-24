@@ -1,4 +1,5 @@
-﻿namespace mUczen
+﻿using mUczen.Models;
+namespace mUczen
 {
     public partial class MainPage : ContentPage
     {
@@ -21,7 +22,12 @@
 
         private void LoginButtonClicked(object sender, EventArgs e)
         {
-            // Logika logowania użytkownika (do bazy danych)
+            User testUser = new User
+            {
+                FirstName = "John",
+                Email = "JohnPork@gmail.com",
+                Password = "John_Pork_Password_1"
+            };
             LoginPopup.IsVisible = false;
         }
     }
