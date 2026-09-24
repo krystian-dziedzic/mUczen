@@ -1,4 +1,5 @@
-﻿using mUczen.Models;
+﻿using mUczen.Services;
+
 namespace mUczen
 {
     public partial class MainPage : ContentPage
@@ -6,6 +7,7 @@ namespace mUczen
         public MainPage()
         {
             InitializeComponent();
+            Services.Database.Initialize();
         }
         private async void Animate_Logo(object sender, EventArgs e)
         {
@@ -22,12 +24,6 @@ namespace mUczen
 
         private void LoginButtonClicked(object sender, EventArgs e)
         {
-            User testUser = new User
-            {
-                FirstName = "John",
-                Email = "JohnPork@gmail.com",
-                Password = "John_Pork_Password_1"
-            };
             LoginPopup.IsVisible = false;
         }
     }
