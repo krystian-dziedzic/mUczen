@@ -2,7 +2,7 @@
 
 namespace mUczen.Models
 {
-    public class Attendance
+    public class Grade
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -10,8 +10,8 @@ namespace mUczen.Models
         [Indexed]
         public int UserId { get; set; }
 
-        public int LessonId { get; set; }
+        public string? Subject { get; set; }
+        public double Value { get; set; }
         public DateTime Date { get; set; }
-        public bool IsPresent { get; set; }
     }
 }
