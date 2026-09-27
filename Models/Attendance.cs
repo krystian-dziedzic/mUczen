@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using SQLite;
 
 namespace mUczen.Models
 {
-    internal class Attendance
+    public class Attendance
     {
-        List<Tuple<DateTime, bool>>? AttendanceList;
-        //DateTime - Data lekcji, bool - Obecność (true) lub nieobecność (false)
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
+        [Indexed]
+        public int UserId { get; set; }
+
+        public int LessonId { get; set; }
+        public DateTime Date { get; set; }
+        public bool IsPresent { get; set; }
     }
 }
