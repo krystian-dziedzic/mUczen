@@ -12,19 +12,10 @@ namespace mUczen.Services
         private static SQLiteConnection Connection = new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Resources.Constants.DatabaseFilename));
         public static void Initialize()
         {
-            Connection.CreateTable<Models.User>();
-            Connection.CreateTable<Models.Grades>();
-            Connection.CreateTable<Models.Schedule>();
-            Connection.CreateTable<Models.Attendance>();
-        }
-        public void insertUser(string username, string password, string email)
-        {
-            Connection.Insert(new User
-            {
-                FirstName = username,
-                Email = email,
-                Password = password
-            });
+            Connection.CreateTable<Grade>();
+            Connection.CreateTable<Lesson>();
+            Connection.CreateTable<Attendance>();
+            Connection.CreateTable<User>();
         }
     }
 }
