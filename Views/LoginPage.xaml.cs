@@ -14,9 +14,12 @@
                 await Logo.ScaleToAsync(1.0, 800);
             }
         }
-        private void DisplayLoginPopup(object sender, EventArgs e)
+        private async void DisplayLoginPopup(object sender, EventArgs e)
         {
+            LoginPopup.TranslationX = Width;
             LoginPopup.IsVisible = true;
+
+            await LoginPopup.TranslateToAsync(0, 0, 400);
         }
 
         private void LoginButtonClicked(object sender, EventArgs e)
