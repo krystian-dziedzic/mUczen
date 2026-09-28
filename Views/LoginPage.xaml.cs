@@ -1,4 +1,6 @@
-﻿namespace mUczen.Views
+﻿using mUczen.Services;
+using mUczen.Models;
+namespace mUczen.Views
 {
     public partial class LoginPage : ContentPage
     {
@@ -24,7 +26,13 @@
 
         private void LoginButtonClicked(object sender, EventArgs e)
         {
-            // Logika logowania użytkownika (do bazy danych)
+            mUczen.Services.Database.Connection.Insert(new User 
+            { 
+                FirstName = "Adam",
+                IsAdmin = true,
+                Password = mUczen.Services.Database.hasher.HashPassword(PasswordEntry.Text),
+                StudentIdCard = "1" 
+            });
             LoginPopup.IsVisible = false;
         }
     }
