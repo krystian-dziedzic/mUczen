@@ -18,17 +18,6 @@ namespace mUczen.Services
             Connection.CreateTable<Attendance>();
             Connection.CreateTable<User>();
         }
-        //TESTING FUNCTION REMOVE LATER
-        public static void testFunctionInsert()
-        {
-            Connection.Insert(new User
-            {
-                StudentIdCard = "1",
-                Password = "test",
-                FirstName = "test",
-                IsAdmin = true
-            });
-        }
         public static PasswordHasher<User> hasher = new PasswordHasher<User>();
     }
 }
