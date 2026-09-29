@@ -1,5 +1,6 @@
 ﻿using mUczen.Services;
 using mUczen.Models;
+using SQLite;
 namespace mUczen.Views
 {
     public partial class LoginPage : ContentPage
@@ -26,13 +27,7 @@ namespace mUczen.Views
 
         private void LoginButtonClicked(object sender, EventArgs e)
         {
-            mUczen.Services.Database.Connection.Insert(new User 
-            { 
-                FirstName = "Adam",
-                IsAdmin = true,
-                Password = mUczen.Services.Database.hasher.HashPassword(PasswordEntry.Text),
-                StudentIdCard = "1" 
-            });
+
             LoginPopup.IsVisible = false;
         }
     }
