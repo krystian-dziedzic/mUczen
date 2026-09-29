@@ -25,10 +25,46 @@ namespace mUczen.Views
             await LoginPopup.TranslateToAsync(0, 0, 400);
         }
 
-        private void LoginButtonClicked(object sender, EventArgs e)
+        private bool LoginCheck(string studentIdCard, string password)
         {
-
-            LoginPopup.IsVisible = false;
+            var user = mUczen.Services.Database.Connection.Query<User>("SELECT * FROM User WHERE StudentIdCard = ? AND Password = ?", studentIdCard, mUczen.Services.Database.hasher.HashPassword(null, password));
+            if (user.Any())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        //WPROWADZIĆ SESJE I ZABEZPIECZENIA TOKENÓW
+        private async void LoginButtonClicked(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(StudentIdCardEntry.Text) || string.IsNullOrWhiteSpace(PasswordEntry.Text))
+            {
+                await DisplayAlertAsync("Błąd", "Proszę wypełnić wszystkie pola.", "OK");
+                return;
+            }
+            else if (StudentIdCardEntry.Text.Length != 8)
+            {
+                await DisplayAlertAsync("Błąd", "Numer legitymacji musi mieć minimum 8 znaków.", "OK");
+                return;
+            }
+            else if (PasswordEntry.Text.Length < 6)
+            {
+                await DisplayAlertAsync("Błąd", "Hasło musi mieć minimum 6 znaków.", "OK");
+                return;
+            }
+            else if (LoginCheck(StudentIdCardEntry.Text, PasswordEntry.Text))
+            {
+                await DisplayAlertAsync("Sukces", "Zalogowano pomyślnie!", "OK");
+                //await Shell.Current.GoToAsync("//MainPage");
+                //nawigacja do strony głównej po zalogowaniu
+            }
+            else
+            {
+                await DisplayAlertAsync("Błąd", "Nieprawidłowy numer legitymacji lub hasło.", "OK");
+            }
         }
     }
 }

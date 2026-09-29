@@ -8,8 +8,6 @@ namespace mUczen
         {
             InitializeComponent();
             mUczen.Services.Database.Initialize();
-
-            mUczen.Services.Database.testFunctionInsert();
         }
 
         protected override Window CreateWindow(IActivationState? activationState)

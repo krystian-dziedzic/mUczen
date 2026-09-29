@@ -149,11 +149,11 @@
                     </Border.StrokeShape>
 
                     <Entry
-                        x:Name="UsernameEntry"
+                        x:Name="StudentIdCardEntry"
                         PlaceholderColor="Grey"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
-                        Placeholder="Nazwa użytkownika"
+                        Placeholder="Numer legitymacji"
                         BackgroundColor="Transparent"
                         TextColor="Black"
                         Margin="8,0"/>
