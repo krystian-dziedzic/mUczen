@@ -1,6 +1,7 @@
 ﻿using mUczen.Services;
 using mUczen.Models;
 using SQLite;
+using Microsoft.AspNetCore.Identity;
 namespace mUczen.Views
 {
     public partial class LoginPage : ContentPage
@@ -8,6 +9,7 @@ namespace mUczen.Views
         public LoginPage()
         {
             InitializeComponent();
+            Database.Initialize();
         }
         private async void Animate_Logo(object sender, EventArgs e)
         {
@@ -27,17 +29,35 @@ namespace mUczen.Views
 
         private bool LoginCheck(string studentIdCard, string password)
         {
-            var user = mUczen.Services.Database.Connection.Query<User>("SELECT * FROM User WHERE StudentIdCard = ? AND Password = ?", studentIdCard, mUczen.Services.Database.hasher.HashPassword(null, password));
-            if (user.Any())
-            {
-                return true;
-            }
-            else
+            var user = Database.Connection.Query<User>("SELECT * FROM User WHERE StudentIdCard = ?", studentIdCard);
+            if (user.Count == 0)
             {
                 return false;
             }
+            else
+            {
+                if (Database.hasher.VerifyHashedPassword(user[0], user[0].Password, password) == PasswordVerificationResult.Success)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
-        //WPROWADZIĆ SESJE I ZABEZPIECZENIA TOKENÓW
+        //WPROWADZIĆ --LOCAL STORAGE-- I ZABEZPIECZENIA TOKENÓW
+        private void CreateAccountButtonClicked(object sender, EventArgs e)
+        {
+            //Test user
+            Database.Connection.Insert(new User
+            {
+                StudentIdCard = "00000001",
+                Password = Database.hasher.HashPassword(new User(), "testpassword"),
+                FirstName = "Władysław",
+                IsAdmin = true
+            });
+        }
         private async void LoginButtonClicked(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(StudentIdCardEntry.Text) || string.IsNullOrWhiteSpace(PasswordEntry.Text))
@@ -47,7 +67,7 @@ namespace mUczen.Views
             }
             else if (StudentIdCardEntry.Text.Length != 8)
             {
-                await DisplayAlertAsync("Błąd", "Numer legitymacji musi mieć minimum 8 znaków.", "OK");
+                await DisplayAlertAsync("Błąd", "Numer legitymacji musi mieć 8 znaków.", "OK");
                 return;
             }
             else if (PasswordEntry.Text.Length < 6)

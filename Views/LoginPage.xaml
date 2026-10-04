@@ -89,6 +89,7 @@
 
             <Button
                 Text="Utwórz konto"
+                Clicked="CreateAccountButtonClicked"
                 BorderColor="{StaticResource CharcoalBrown}"
                 BorderWidth="1"
                 BackgroundColor="Transparent"
