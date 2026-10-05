@@ -109,6 +109,8 @@
         </VerticalStackLayout>
 
         <!-- LOGIN POPUP -->
+        <!-- REDESIGN IT -->
+        <!--
         <Border
             Grid.RowSpan="3"
             x:Name="LoginPopup"
@@ -192,5 +194,6 @@
                     Clicked="LoginButtonClicked"/>
             </VerticalStackLayout>
         </Border>
+        -->
     </Grid>
 </ContentPage>
