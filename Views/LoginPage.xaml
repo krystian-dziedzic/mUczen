@@ -86,7 +86,23 @@
                 FontSize="16"
                 FontAttributes="Bold"
                 Clicked="DisplayLoginPopup"/>
-
+            <!-- Entry placeholders -->
+            <Entry
+                x:Name="CreateAccountPasswordEntry"
+                Keyboard="Password"
+                Placeholder="Hasło"/>
+            <Entry
+                x:Name="CreateAccountStudentIdCardEntry"
+                Keyboard="Numeric"
+                Placeholder="Numer legitymacji"/>
+            <Entry
+                x:Name="CreateAccountFirstName"
+                Keyboard="Text"
+                Placeholder="Imię"/>
+            <Entry
+                x:Name="CreateAccountLastName"
+                Keyboard="Text"
+                Placeholder="Nazwisko"/>
             <Button
                 Text="Utwórz konto"
                 Clicked="CreateAccountButtonClicked"
