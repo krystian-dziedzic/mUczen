@@ -14,18 +14,25 @@
                 await Logo.ScaleToAsync(1.0, 800);
             }
         }
-        private async void DisplayLoginPopup(object sender, EventArgs e)
-        {
-            LoginPopup.TranslationX = Width;
-            LoginPopup.IsVisible = true;
 
-            await LoginPopup.TranslateToAsync(0, 0, 400);
-        }
+        //
 
-        private void LoginButtonClicked(object sender, EventArgs e)
-        {
-            // Logika logowania użytkownika (do bazy danych)
-            LoginPopup.IsVisible = false;
-        }
+        //private async void DisplayLoginPopup(object sender, EventArgs e)
+        //{
+        //    LoginPopup.TranslationX = Width;
+        //    LoginPopup.IsVisible = true;
+
+        //    await LoginPopup.TranslateToAsync(0, 0, 400);
+        //}
+        
+        //private async void DisplayAccountCreationPopup(object sender, EventArgs e)
+        //{
+        //
+        //}
+        //private void LoginButtonClicked(object sender, EventArgs e)
+        //{
+        //    // Logika logowania użytkownika (do bazy danych)
+        //    LoginPopup.IsVisible = false;
+        //}
     }
 }
