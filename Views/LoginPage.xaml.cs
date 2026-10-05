@@ -46,33 +46,34 @@ namespace mUczen.Views
                 }
             }
         }
+
+        //private bool AccountCreationCheck(string password, string firstName, string studentidcard, string lastName)
+        //{
+        //    if (string.IsNullOrEmpty(password) ||
+        //        string.IsNullOrEmpty(firstName) ||
+        //        string.IsNullOrEmpty(studentidcard) ||
+        //        string.IsNullOrEmpty(lastName))
+        //    {
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        if (password.Length < 8)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //}
         //WPROWADZIĆ --LOCAL STORAGE-- I ZABEZPIECZENIA TOKENÓW
         private void CreateAccountButtonClicked(object sender, EventArgs e)
         {
-            //Test user
-            Database.Connection.Insert(new User
-            {
-                StudentIdCard = "00000001",
-                Password = Database.hasher.HashPassword(new User(), "testpassword"),
-                FirstName = "Władysław",
-                IsAdmin = true
-            });
+            
         }
         private async void LoginButtonClicked(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(StudentIdCardEntry.Text) || string.IsNullOrWhiteSpace(PasswordEntry.Text))
             {
                 await DisplayAlertAsync("Błąd", "Proszę wypełnić wszystkie pola.", "OK");
-                return;
-            }
-            else if (StudentIdCardEntry.Text.Length != 8)
-            {
-                await DisplayAlertAsync("Błąd", "Numer legitymacji musi mieć 8 znaków.", "OK");
-                return;
-            }
-            else if (PasswordEntry.Text.Length < 6)
-            {
-                await DisplayAlertAsync("Błąd", "Hasło musi mieć minimum 6 znaków.", "OK");
                 return;
             }
             else if (LoginCheck(StudentIdCardEntry.Text, PasswordEntry.Text))
