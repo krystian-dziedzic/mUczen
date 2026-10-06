@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Shell.NavBarIsVisible="False"
+             x:Class="mUczen.Views.MainPage"
+             Title="MainPage">
+    <Grid ColumnDefinitions="*, *, *" RowDefinitions="*, 2*, *, *, auto" ColumnSpacing="12" RowSpacing="12">
+        <!-- CONTENT -->
+        <ScrollView
+            Margin="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Grid.Row="0"
+            Grid.RowSpan="4"
+            HorizontalOptions="Center">
+            <VerticalStackLayout>
+                <!-- HELLO WIDGET -->
+                <!-- PLACEHOLDER VALUES INSIDE -->
+                <VerticalStackLayout
+                    Padding="20,15,20,30">
+                    <Label 
+                        Text="Cześć," 
+                        FontSize="Medium"/>
+                    <Label 
+                        x:Name="UserFirstName"
+                        Text="Wojciech!"
+                        FontSize="Large"
+                        FontAttributes="Bold"/>
+                    <Label 
+                        x:Name="UserClassName"
+                        FontSize="Medium"
+                        Text="4TPa"/>
+                </VerticalStackLayout>
+                <!-- STUDENT ID VISUALIZATION -->
+                <!-- PLACEHOLDER VALUES -->
+                <Grid
+                    BackgroundColor="AliceBlue"
+                    ColumnSpacing="12"
+                    RowSpacing="12"
+                    ColumnDefinitions="*, 2*"
+                    RowDefinitions="4*, *">
+                    <Image
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Source="placeholder.jpg"/>
+                    <VerticalStackLayout
+                        Padding="20,15,20,30"
+                        Grid.Column="1"
+                        Grid.Row="0">
+                        <Label
+                            Text="Legitymacja uczniowska"/>
+                        <Label
+                            Text="Wojciech Kapera"/>
+                        <Label
+                            Text="Technikum nr 1"/>
+                        <Label
+                            Text="im. Jana Kowalskiego"/>
+                        <Label
+                            Text="Nr legitymacji"/>
+                        <Label
+                            Text="213769420"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
+        <!-- FIXED HOME DOCK -->
+        <HorizontalStackLayout 
+            Grid.Row="5" 
+            Grid.Column="0" 
+            Grid.ColumnSpan="3"
+            Padding="20,15,20,30">
+            <Label
+                Text="TEST"/>
+        </HorizontalStackLayout>
+    </Grid> 
+</ContentPage>
