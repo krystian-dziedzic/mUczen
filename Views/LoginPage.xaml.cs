@@ -21,18 +21,45 @@
         //{
         //    LoginPopup.TranslationX = Width;
         //    LoginPopup.IsVisible = true;
+        //    LoginButton.IsEnabled = false;
+        //    RegisterButton.IsEnabled = false;
 
         //    await LoginPopup.TranslateToAsync(0, 0, 400);
         //}
-        
+
+        private async void DisplayRegisterPopup(object sender, EventArgs e)
+        {
+            RegisterPopup.TranslationX = Width;
+            RegisterPopup.IsVisible = true;
+            LoginButton.IsEnabled = false;
+            RegisterButton.IsEnabled = false;
+
+            await RegisterPopup.TranslateToAsync(0, 0, 400);
+        }
+
         //private async void DisplayAccountCreationPopup(object sender, EventArgs e)
         //{
         //
         //}
+
         //private void LoginButtonClicked(object sender, EventArgs e)
         //{
         //    // Logika logowania użytkownika (do bazy danych)
         //    LoginPopup.IsVisible = false;
+
+        //    // TEMP BUTTON ENABLING
+        //    LoginButton.IsEnabled = true;
+        //    RegisterButton.IsEnabled = true;
         //}
+
+        private void RegisterButtonClicked(object sender, EventArgs e)
+        {
+            // Logika rejestrowania użytkownika (do bazy danych)
+            RegisterPopup.IsVisible = false;
+
+            // TEMP BUTTON ENABLING
+            LoginButton.IsEnabled = true;
+            RegisterButton.IsEnabled = true;
+        }
     }
 }
