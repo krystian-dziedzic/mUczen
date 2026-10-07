@@ -34,7 +34,6 @@
                 <!-- STUDENT ID VISUALIZATION -->
                 <!-- PLACEHOLDER VALUES -->
                 <Grid
-                    Margin="10"
                     BackgroundColor="AliceBlue"
                     ColumnSpacing="12"
                     RowSpacing="12"
@@ -45,7 +44,6 @@
                         Grid.Row="0"
                         Source="placeholder.jpg"/>
                     <VerticalStackLayout
-                        Padding="20,15,20,30"
                         Grid.Column="1"
                         Grid.Row="0">
                         <Label
@@ -61,24 +59,6 @@
                         <Label
                             Text="213769420"/>
                     </VerticalStackLayout>
-                    <Border
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1"
-                        Grid.RowSpan="2"
-                        Stroke="{StaticResource Cerulean}"
-                        StrokeThickness="4"
-                        StrokeShape="RoundRectangle 40,40,40,40"
-                        Background="{StaticResource Cerulean}"
-                        Padding="5"
-                        Margin="10"
-                        HorizontalOptions="Center">
-                        <Label 
-                            Text="Ważna do: 29.09.2026"
-                            TextColor="{StaticResource Porcelain}"
-                            FontSize="18"
-                            FontAttributes="Bold"/>
-                    </Border>
                 </Grid>
             </VerticalStackLayout>
         </ScrollView>
