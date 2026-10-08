@@ -4,7 +4,7 @@
              Shell.NavBarIsVisible="False"
              x:Class="mUczen.Views.MainPage"
              Title="MainPage">
-    <Grid ColumnDefinitions="*, *, *" RowDefinitions="*, 2*, *, *" ColumnSpacing="12" RowSpacing="12">
+    <Grid ColumnDefinitions="*, *, *" RowDefinitions="*, 2*, *, *, auto" ColumnSpacing="12" RowSpacing="12">
         <!-- CONTENT -->
         <ScrollView
             Margin="0"
@@ -33,38 +33,67 @@
                 </VerticalStackLayout>
                 <!-- STUDENT ID VISUALIZATION -->
                 <!-- PLACEHOLDER VALUES -->
+                <Border
+                    Stroke="{StaticResource CharcoalBrown}"
+                    StrokeThickness="4"
+                    StrokeShape="RoundRectangle 20">
                 <Grid
+                    Margin="10"
                     BackgroundColor="AliceBlue"
                     ColumnSpacing="12"
                     RowSpacing="12"
                     ColumnDefinitions="*, 2*"
                     RowDefinitions="4*, *">
-                    <Image
-                        Grid.Column="0"
-                        Grid.Row="0"
-                        Source="placeholder.jpg"/>
+                    <Border
+                        Stroke="{StaticResource CharcoalBrown}"
+                        StrokeShape="RoundRectangle 20"
+                        StrokeThickness="4">
+                        <Image
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Source="placeholder.jpg"/>
+                    </Border>
                     <VerticalStackLayout
                         Grid.Column="1"
                         Grid.Row="0">
                         <Label
+                            HorizontalOptions="Center"
+                            FontAttributes="Bold"
+                            FontSize="Small"
                             Text="Legitymacja uczniowska"/>
                         <Label
+                            HorizontalOptions="Center"
+                            FontAttributes="Bold"
+                            FontSize="Micro"
                             Text="Wojciech Kapera"/>
                         <Label
+                            HorizontalOptions="Center"
+                            FontAttributes="Bold"
+                            FontSize="Micro"
                             Text="Technikum nr 1"/>
                         <Label
+                            HorizontalOptions="Center"
+                            FontAttributes="Bold"
+                            FontSize="Micro"
                             Text="im. Jana Kowalskiego"/>
                         <Label
+                            HorizontalOptions="Center"
+                            FontAttributes="Bold"
+                            FontSize="Micro"
                             Text="Nr legitymacji"/>
                         <Label
+                            HorizontalOptions="Center"
+                            FontAttributes="Bold"
+                            FontSize="Micro"
                             Text="213769420"/>
                     </VerticalStackLayout>
                 </Grid>
+                </Border>
             </VerticalStackLayout>
         </ScrollView>
         <!-- FIXED HOME DOCK -->
         <HorizontalStackLayout 
-            Grid.Row="4" 
+            Grid.Row="5" 
             Grid.Column="0" 
             Grid.ColumnSpan="3"
             Padding="20,15,20,30">
