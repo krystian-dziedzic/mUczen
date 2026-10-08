@@ -8,7 +8,7 @@
     Title="mUczen">
 
     <ShellContent
-        ContentTemplate="{DataTemplate views:MainPage}"
+        ContentTemplate="{DataTemplate views:LoginPage}"
         Route="MainPage" />
 
 </Shell>
