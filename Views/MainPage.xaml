@@ -13,59 +13,69 @@
             Grid.Row="0"
             Grid.RowSpan="4"
             HorizontalOptions="Center">
+            <!-- WIDGETS CONTAINER -->
             <VerticalStackLayout>
                 <!-- HELLO WIDGET -->
-                <!-- PLACEHOLDER VALUES INSIDE -->
-                <VerticalStackLayout
-                    Padding="20,15,20,30">
-                    <Label 
-                        Text="Cześć," 
-                        FontSize="Medium"/>
-                    <Label 
-                        x:Name="UserFirstName"
-                        Text="Wojciech!"
-                        FontSize="Large"
-                        FontAttributes="Bold"/>
-                    <Label 
-                        x:Name="UserClassName"
-                        FontSize="Medium"
-                        Text="4TPa"/>
-                </VerticalStackLayout>
-                <!-- STUDENT ID VISUALIZATION -->
-                <!-- PLACEHOLDER VALUES -->
-                <Grid
-                    ColumnSpacing="12"
-                    RowSpacing="12"
-                    ColumnDefinitions="*, 2*"
-                    RowDefinitions="4*, *">
-                    <Image
-                        Grid.Column="0"
-                        Grid.Row="0"
-                        Source="placeholder.jpg"/>
+                <!-- PLACEHOLDER VALUES INSIDE CHANGE LATER -->
+                <FlexLayout
+                    JustifyContent="SpaceBetween">
                     <VerticalStackLayout
-                        Grid.Column="1"
-                        Grid.Row="0">
-                        <Label
-                            Text="Legitymacja uczniowska"/>
-                        <Label
-                            Text="Wojciech Kapera"/>
-                        <Label
-                            Text="Technikum nr 1"/>
-                        <Label
-                            Text="im. Jana Kowalskiego"/>
-                        <Label
-                            Text="Nr legitymacji"/>
-                        <Label
-                            Text="213769420"/>
+                        Padding="20,20">
+                        <Label 
+                            Text="Cześć," 
+                            FontSize="Large"/>
+                        <Label 
+                            x:Name="UserFirstName"
+                            Text="Wojciech!"
+                            FontSize="Large"
+                            FontAttributes="Bold"/>
+                        <Label 
+                            x:Name="UserClassName"
+                            FontSize="Medium"
+                            Text="4TPa"/>
                     </VerticalStackLayout>
-                    <Label
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1"
-                        Text="TESTOWY TEXT"
-                        HorizontalOptions="Center"
-                        Margin="10"/>
-                </Grid>
+                    <!-- INSERT MUCZEN LOGO HERE -->
+                    <Image
+                        Source="student_logo_placeholder.png"
+                        HeightRequest="100"
+                        WidthRequest="100"/>
+                </FlexLayout>
+                <!-- STUDENT ID VISUALIZATION -->
+                <!-- PLACEHOLDER VALUES ChANGE LATER -->
+                <Border
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Stroke="{StaticResource CharcoalBrown}"
+                    StrokeShape="RoundRectangle 20"
+                    BackgroundColor="MediumSpringGreen">
+                    <FlexLayout
+                        HeightRequest="230"
+                        JustifyContent="SpaceEvenly"
+                        AlignItems="Center">
+                        <Border
+                            StrokeShape="RoundRectangle 10">
+                            <Image
+                            Source="placeholder.jpg"
+                                MaximumHeightRequest="150"/>
+                        </Border>
+                        <VerticalStackLayout
+                            Spacing="10">
+                            <Label
+                                Text="Legitymacja uczniowska"
+                                FontSize="Medium"/>
+                            <Label Text="Wojciech Kapera"
+                                FontSize="Large"
+                                FontAttributes="Bold"/>
+                            <Label 
+                                MaximumWidthRequest="200"
+                                Text="Zespół szkół technicznych"/>
+                            <Label 
+                                Text="Nr legitymacji:"/>
+                            <Label 
+                                Text="213769420"/>
+                        </VerticalStackLayout>
+                    </FlexLayout>
+                </Border>
             </VerticalStackLayout>
         </ScrollView>
         <!-- FIXED HOME DOCK -->
