@@ -319,10 +319,89 @@
             </VerticalStackLayout>
         </ScrollView>
 
-        <!-- DOCK ( NOT FINISHED ) -->
-        <HorizontalStackLayout Grid.Row="1" Padding="20,15,20,30">
-            <Label Text="TEST"/>
-        </HorizontalStackLayout>
+        <!-- DOCK ( NOT WORKING YET ) -->
+        <Border Grid.Row="1"
+                BackgroundColor="{StaticResource Porcelain}"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 20,20,0,0"
+                Padding="10,12,10,30">
+            <Border.Shadow>
+                <Shadow
+                    Brush="Black"
+                    Opacity="0.10"
+                    Radius="20"
+                    Offset="0,-4"/>
+            </Border.Shadow>
+
+            <Grid ColumnDefinitions="*,*,*,*,*">
+
+                <!-- HOME ( SELECTED ) -->
+                <VerticalStackLayout Grid.Column="0" Spacing="4" HorizontalOptions="Center">
+                    <!-- IMPLEMENT GESTURE RECOGNIZER -->
+                    <!-- INSERT ICON -->
+                    <Image WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
+                    <Label Text="Główna"
+                           FontSize="11"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource Cerulean}"
+                           HorizontalOptions="Center"
+                           LineBreakMode="NoWrap"/>
+                </VerticalStackLayout>
+
+                <!-- GRADES -->
+                <VerticalStackLayout Grid.Column="1" Spacing="4" HorizontalOptions="Center">
+                    <!-- IMPLEMENT GESTURE RECOGNIZER -->
+                    <!-- INSERT ICON -->
+                    <Image WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
+                    <Label Text="Oceny"
+                           FontSize="11"
+                           TextColor="{StaticResource CharcoalBrown}"
+                           Opacity="0.6"
+                           HorizontalOptions="Center"
+                           LineBreakMode="NoWrap"/>
+                </VerticalStackLayout>
+
+                <!-- TIMETABLE -->
+                <VerticalStackLayout Grid.Column="2" Spacing="4" HorizontalOptions="Center">
+                    <!-- IMPLEMENT GESTURE RECOGNIZER -->
+                    <!-- INSERT ICON -->
+                    <Image WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
+                    <Label Text="Plan"
+                           FontSize="11"
+                           TextColor="{StaticResource CharcoalBrown}"
+                           Opacity="0.6"
+                           HorizontalOptions="Center"
+                           LineBreakMode="NoWrap"/>
+                </VerticalStackLayout>
+                
+                <!-- HOMEWORK -->
+                <VerticalStackLayout Grid.Column="3" Spacing="4" HorizontalOptions="Center">
+                    <!-- IMPLEMENT GESTURE RECOGNIZER -->
+                    <!-- INSERT ICON -->
+                    <Image WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
+                    <Label Text="Zadania"
+                           FontSize="11"
+                           TextColor="{StaticResource CharcoalBrown}"
+                           Opacity="0.6"
+                           HorizontalOptions="Center"
+                           LineBreakMode="NoWrap"/>
+                </VerticalStackLayout>
+
+                <!-- MORE -->
+                <VerticalStackLayout Grid.Column="4" Spacing="4" HorizontalOptions="Center">
+                    <!-- IMPLEMENT GESTURE RECOGNIZER -->
+                    <!-- INSERT ICON -->
+                    <Image WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
+                    <Label Text="Więcej"
+                           FontSize="11"
+                           TextColor="{StaticResource CharcoalBrown}"
+                           Opacity="0.6"
+                           HorizontalOptions="Center"
+                           LineBreakMode="NoWrap"/>
+                </VerticalStackLayout>
+
+            </Grid>
+        </Border>
 
     </Grid>
 </ContentPage>
