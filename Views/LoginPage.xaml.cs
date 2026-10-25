@@ -87,5 +87,21 @@ namespace mUczen.Views
                 await DisplayAlertAsync("Błąd", "Nieprawidłowy numer legitymacji lub hasło.", "OK");
             }
         }
+
+
+        // 25.10    EXAMPLE REGISTER LOGIC  ( WOJTEK OGARNIAJ TEN UI JAK TO CZYTASZ 😘😘 )
+
+        //private async void RegisterButtonClicked(object sender, EventArgs e)
+        //{
+        //    var result = AuthService.Register(RegisterUsernameEntry.Text, RegisterPasswordEntry.Text, RegisterPasswordEntry2Nd.Text);
+        //    if (result != RegisterResult.Success)
+        //    {
+        //        await DisplayAlertAsync("Błąd", result.ToString(), "OK");
+        //        return;
+        //    }
+        //    RegisterPopup.IsVisible = false;
+        //    LoginButton.IsEnabled = true;
+        //    RegisterButton.IsEnabled = true;
+        //}
     }
 }
