@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using mUczen.Services;
-
 namespace mUczen
 {
     public partial class App : Application
@@ -8,7 +7,7 @@ namespace mUczen
         public App()
         {
             InitializeComponent();
-            Database.Initialize();
+            mUczen.Services.Database.Initialize();
         }
 
         protected override Window CreateWindow(IActivationState? activationState)
