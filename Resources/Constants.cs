@@ -5,8 +5,7 @@ using System.Text;
 namespace mUczen.Resources
 {
     internal class Constants
-    {      
-
+    {
         public const string DatabaseFilename = "mUczen.db3";
 
         public const SQLite.SQLiteOpenFlags Flags =
