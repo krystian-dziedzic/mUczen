@@ -1,7 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Shell.NavBarIsVisible="False"
              x:Class="mUczen.Views.LoginPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="FieldLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="Opacity" Value="0.85"/>
+                <Setter Property="Margin" Value="4,0,0,0"/>
+            </Style>
+
+            <Style x:Key="FieldBorder" TargetType="Border">
+                <Setter Property="WidthRequest" Value="300"/>
+                <Setter Property="HeightRequest" Value="52"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="StrokeThickness" Value="0"/>
+            </Style>
+
+            <Style x:Key="FieldEntry" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="{StaticResource CharcoalBrown}"/>
+                <Setter Property="PlaceholderColor" Value="Grey"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="12,0,0,0"/>
+            </Style>
+
+            <Style x:Key="ShowPasswordLabel" TargetType="Label">
+                <Setter Property="Text" Value="Pokaż"/>
+                <Setter Property="TextColor" Value="{StaticResource Cerulean}"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="8,0,14,0"/>
+            </Style>
+
+            <Style x:Key="BackButton" TargetType="Button">
+                <Setter Property="Text" Value="‹  Wróć"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="Margin" Value="10,10,0,0"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <Grid BackgroundColor="{StaticResource Porcelain}"
           RowDefinitions="*,Auto,Auto"
@@ -15,7 +62,17 @@
             Opacity="0.08"
             HorizontalOptions="Start"
             VerticalOptions="Start"
-            Margin="-70,-50,0,0"/>
+            Margin="-70,-50,0,0"
+            InputTransparent="True"/>
+        <Ellipse
+            WidthRequest="110"
+            HeightRequest="110"
+            Fill="{StaticResource Cerulean}"
+            Opacity="0.06"
+            HorizontalOptions="End"
+            VerticalOptions="Start"
+            Margin="0,90,-40,0"
+            InputTransparent="True"/>
         <Ellipse
             WidthRequest="130"
             HeightRequest="130"
@@ -23,10 +80,12 @@
             Opacity="0.06"
             HorizontalOptions="End"
             VerticalOptions="End"
-            Margin="0,0,-40,-30"/>
+            Margin="0,0,-40,-30"
+            InputTransparent="True"/>
 
         <!-- TOP -->
         <VerticalStackLayout
+            x:Name="TopSection"
             Grid.Row="0"
             VerticalOptions="Center"
             HorizontalOptions="Center"
@@ -52,6 +111,7 @@
                 <Image
                     x:Name="Logo"
                     Loaded="Animate_Logo"
+                    Unloaded="Stop_Logo"
                     Source="student_logo_placeholder.png"
                     Aspect="AspectFit"/>
             </Border>
@@ -71,6 +131,7 @@
 
         <!-- BOTTOM -->
         <VerticalStackLayout
+            x:Name="BottomSection"
             Grid.Row="2"
             Spacing="12"
             Padding="20,15,20,30"
@@ -79,18 +140,27 @@
             <Button
                 x:Name="LoginButton"
                 Text="Zaloguj się"
+                TextColor="White"
                 BackgroundColor="{StaticResource Cerulean}"
                 CornerRadius="12"
                 WidthRequest="300"
                 HeightRequest="52"
                 FontSize="16"
                 FontAttributes="Bold"
-                />
-                <!-- Clicked="DisplayLoginPopup" -->
+                Clicked="DisplayLoginPopup">
+                <Button.Shadow>
+                    <Shadow
+                        Brush="{StaticResource Cerulean}"
+                        Opacity="0.35"
+                        Radius="14"
+                        Offset="0,6"/>
+                </Button.Shadow>
+            </Button>
 
             <Button
                 x:Name="RegisterButton"
                 Text="Utwórz konto"
+                Clicked="DisplayRegisterPopup"
                 BorderColor="{StaticResource CharcoalBrown}"
                 BorderWidth="1"
                 BackgroundColor="Transparent"
@@ -98,8 +168,7 @@
                 WidthRequest="300"
                 HeightRequest="52"
                 FontSize="16"
-                TextColor="{StaticResource CharcoalBrown}"
-                Clicked="DisplayRegisterPopup"/>
+                TextColor="{StaticResource CharcoalBrown}"/>
 
             <Label
                 Text="© 2026 mUczeń"
@@ -111,193 +180,253 @@
 
         </VerticalStackLayout>
 
-        <!-- ADD ACCOUNT CREATION POPUP SIMILAR TO LOGIN POPUP-->
-        
         <!-- LOGIN POPUP -->
-        <!-- <Border
-            Grid.RowSpan="3"
+        <Grid
             x:Name="LoginPopup"
-            BackgroundColor="{StaticResource Cerulean}"
-            Padding="20"
-            IsVisible="False"
-            HorizontalOptions="Fill"
-            VerticalOptions="Fill"
-            StrokeThickness="0">
-
-            <Border.Shadow>
-                <Shadow
-                    Brush="Black"
-                    Opacity="0.15"
-                    Radius="15"
-                    Offset="0,6"/>
-            </Border.Shadow>
-
-            <VerticalStackLayout Spacing="12" VerticalOptions="Center">
-                <Label
-                    Text="Zaloguj się"
-                    TextColor="Black"
-                    FontSize="24"
-                    FontAttributes="Bold"
-                    Margin="0, 0, 0, 15"
-                    HorizontalOptions="Center"/>
-                <Border
-                    WidthRequest="300"
-                    HeightRequest="52"
-                    BackgroundColor="White"
-                    StrokeThickness="0">
-
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="12"/>
-                    </Border.StrokeShape>
-
-                    <Entry
-                        x:Name="UsernameEntry"
-                        PlaceholderColor="Grey"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Placeholder="Nazwa użytkownika"
-                        BackgroundColor="Transparent"
-                        TextColor="Black"
-                        Margin="8,0"/>
-                </Border>
-
-                <Border
-                    WidthRequest="300"
-                    HeightRequest="52"
-                    BackgroundColor="White"
-                    StrokeThickness="0">
-
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="12"/>
-                    </Border.StrokeShape>
-
-                    <Entry
-                        x:Name="PasswordEntry"
-                        PlaceholderColor="Grey"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Placeholder="Hasło"
-                        IsPassword="True"
-                        BackgroundColor="Transparent"
-                        TextColor="Black"
-                        Margin="8,0"/>
-                </Border>
-                <Button
-                    Text="Zaloguj się"
-                    BackgroundColor="{StaticResource Porcelain}"
-                    BorderColor="{StaticResource CharcoalBrown}"
-                    TextColor="{StaticResource CharcoalBrown}"
-                    BorderWidth="1"
-                    CornerRadius="10"
-                    WidthRequest="300"
-                    HeightRequest="52"
-                    Clicked="LoginButtonClicked"/>
-            </VerticalStackLayout>
-        </Border> -->
-        
-        <!-- REGISTER POPUP -->
-        <Border
             Grid.RowSpan="3"
+            RowDefinitions="Auto,*"
+            BackgroundColor="{StaticResource Cerulean}"
+            IsVisible="False">
+
+            <Ellipse
+                WidthRequest="220"
+                HeightRequest="220"
+                Fill="White"
+                Opacity="0.07"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                Margin="0,-70,-80,0"
+                InputTransparent="True"/>
+            <Ellipse
+                Grid.RowSpan="2"
+                WidthRequest="160"
+                HeightRequest="160"
+                Fill="White"
+                Opacity="0.06"
+                HorizontalOptions="Start"
+                VerticalOptions="End"
+                Margin="-60,0,0,-40"
+                InputTransparent="True"/>
+
+            <Button Grid.Row="0" Style="{StaticResource BackButton}" Clicked="CloseLoginPopup"/>
+
+            <ScrollView Grid.Row="1" VerticalOptions="Center">
+                <VerticalStackLayout Spacing="12" Padding="20" HorizontalOptions="Center">
+
+                    <Label
+                        Text="Witaj ponownie!"
+                        FontSize="28"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        HorizontalOptions="Center"/>
+                    <Label
+                        Text="Zaloguj się numerem legitymacji"
+                        FontSize="14"
+                        TextColor="White"
+                        Opacity="0.8"
+                        HorizontalOptions="Center"
+                        Margin="0,0,0,15"/>
+
+                    <Label Text="Numer legitymacji" Style="{StaticResource FieldLabel}"/>
+                    <Border Style="{StaticResource FieldBorder}" StrokeShape="RoundRectangle 12">
+                        <Entry
+                            x:Name="StudentIdCardEntry"
+                            Style="{StaticResource FieldEntry}"
+                            Placeholder="Numer legitymacji"
+                            Keyboard="Numeric"
+                            ReturnType="Next"
+                            Completed="EntryCompleted"/>
+                    </Border>
+
+                    <Label Text="Hasło" Style="{StaticResource FieldLabel}" Margin="4,6,0,0"/>
+                    <Border Style="{StaticResource FieldBorder}" StrokeShape="RoundRectangle 12">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Entry
+                                x:Name="PasswordEntry"
+                                Style="{StaticResource FieldEntry}"
+                                Placeholder="Hasło"
+                                IsPassword="True"
+                                ReturnType="Done"
+                                Completed="EntryCompleted"/>
+                            <Label
+                                x:Name="LoginShowPasswordLabel"
+                                Grid.Column="1"
+                                Style="{StaticResource ShowPasswordLabel}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TogglePasswordVisibility"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+                    </Border>
+
+                    <Button
+                        Text="Zaloguj się"
+                        BackgroundColor="{StaticResource Porcelain}"
+                        BorderColor="{StaticResource CharcoalBrown}"
+                        TextColor="{StaticResource CharcoalBrown}"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                        CornerRadius="12"
+                        WidthRequest="300"
+                        HeightRequest="52"
+                        Margin="0,15,0,0"
+                        Clicked="LoginButtonClicked"/>
+
+                    <Label HorizontalOptions="Center" Margin="0,10,0,0" TextColor="White" FontSize="14">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Nie masz konta? "/>
+                                <Span Text="Utwórz je" FontAttributes="Bold" TextDecorations="Underline"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SwitchToRegister"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
+
+        <!-- REGISTER POPUP -->
+        <Grid
             x:Name="RegisterPopup"
-            BackgroundColor="{StaticResource Porcelain}"
-            Padding="20"
-            IsVisible="False"
-            HorizontalOptions="Fill"
-            VerticalOptions="Fill"
-            StrokeThickness="0">
+            Grid.RowSpan="3"
+            RowDefinitions="Auto,*"
+            BackgroundColor="{StaticResource Cerulean}"
+            IsVisible="False">
 
-            <Border.Shadow>
-                <Shadow
-                    Brush="Black"
-                    Opacity="0.15"
-                    Radius="15"
-                    Offset="0,6"/>
-            </Border.Shadow>
+            <Ellipse
+                WidthRequest="220"
+                HeightRequest="220"
+                Fill="White"
+                Opacity="0.07"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                Margin="-90,-70,0,0"
+                InputTransparent="True"/>
+            <Ellipse
+                Grid.RowSpan="2"
+                WidthRequest="160"
+                HeightRequest="160"
+                Fill="White"
+                Opacity="0.06"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Margin="0,0,-60,-40"
+                InputTransparent="True"/>
 
-            <VerticalStackLayout Spacing="12" VerticalOptions="Center">
-                <Label
-                    Text="Zarejestruj się"
-                    TextColor="Black"
-                    FontSize="24"
-                    FontAttributes="Bold"
-                    Margin="0, 0, 0, 15"
-                    HorizontalOptions="Center"/>
-                <Border
-                    WidthRequest="300"
-                    HeightRequest="52"
-                    BackgroundColor="White"
-                    StrokeThickness="0">
+            <Button Grid.Row="0" Style="{StaticResource BackButton}" Clicked="CloseRegisterPopup"/>
 
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="12"/>
-                    </Border.StrokeShape>
+            <ScrollView Grid.Row="1" VerticalOptions="Center">
+                <VerticalStackLayout Spacing="12" Padding="20" HorizontalOptions="Center">
 
-                    <Entry
-                        x:Name="RegisterUsernameEntry"
-                        PlaceholderColor="Grey"
+                    <Label
+                        Text="Utwórz konto"
+                        FontSize="28"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        HorizontalOptions="Center"/>
+                    <Label
+                        Text="Uzupełnij dane i zacznij korzystać z mUczenia"
+                        FontSize="14"
+                        TextColor="White"
+                        Opacity="0.8"
                         HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Placeholder="Nazwa użytkownika"
-                        BackgroundColor="Transparent"
-                        TextColor="Black"
-                        Margin="8,0"/>
-                </Border>
+                        HorizontalTextAlignment="Center"
+                        WidthRequest="300"
+                        Margin="0,0,0,10"/>
 
-                <Border
-                    WidthRequest="300"
-                    HeightRequest="52"
-                    BackgroundColor="White"
-                    StrokeThickness="0">
+                    <Label Text="Imię" Style="{StaticResource FieldLabel}"/>
+                    <Border Style="{StaticResource FieldBorder}" StrokeShape="RoundRectangle 12">
+                        <Entry
+                            x:Name="CreateAccountFirstName"
+                            Style="{StaticResource FieldEntry}"
+                            Keyboard="Text"
+                            Placeholder="Imię"
+                            ReturnType="Next"
+                            Completed="EntryCompleted"/>
+                    </Border>
 
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="12"/>
-                    </Border.StrokeShape>
+                    <Label Text="Nazwisko" Style="{StaticResource FieldLabel}" Margin="4,6,0,0"/>
+                    <Border Style="{StaticResource FieldBorder}" StrokeShape="RoundRectangle 12">
+                        <Entry
+                            x:Name="CreateAccountLastName"
+                            Style="{StaticResource FieldEntry}"
+                            Keyboard="Text"
+                            Placeholder="Nazwisko"
+                            ReturnType="Next"
+                            Completed="EntryCompleted"/>
+                    </Border>
 
-                    <Entry
-                        x:Name="RegisterPasswordEntry"
-                        PlaceholderColor="Grey"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Placeholder="Hasło"
-                        IsPassword="True"
-                        BackgroundColor="Transparent"
-                        TextColor="Black"
-                        Margin="8,0"/>
-                </Border>
+                    <Label Text="Numer legitymacji" Style="{StaticResource FieldLabel}" Margin="4,6,0,0"/>
+                    <Border Style="{StaticResource FieldBorder}" StrokeShape="RoundRectangle 12">
+                        <Entry
+                            x:Name="CreateAccountStudentIdCardEntry"
+                            Style="{StaticResource FieldEntry}"
+                            Keyboard="Numeric"
+                            Placeholder="Numer legitymacji"
+                            ReturnType="Next"
+                            Completed="EntryCompleted"/>
+                    </Border>
 
-                <Border
-                    WidthRequest="300"
-                    HeightRequest="52"
-                    BackgroundColor="White"
-                    StrokeThickness="0">
+                    <Label Text="Hasło" Style="{StaticResource FieldLabel}" Margin="4,6,0,0"/>
+                    <Border Style="{StaticResource FieldBorder}" StrokeShape="RoundRectangle 12">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Entry
+                                x:Name="CreateAccountPasswordEntry"
+                                Style="{StaticResource FieldEntry}"
+                                Keyboard="Default"
+                                IsPassword="True"
+                                Placeholder="Hasło"
+                                ReturnType="Done"
+                                Completed="EntryCompleted"/>
+                            <Label
+                                x:Name="RegisterShowPasswordLabel"
+                                Grid.Column="1"
+                                Style="{StaticResource ShowPasswordLabel}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TogglePasswordVisibility"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+                    </Border>
+                    <Label
+                        Text="Hasło powinno mieć co najmniej 8 znaków"
+                        FontSize="12"
+                        TextColor="White"
+                        Opacity="0.7"
+                        Margin="4,-6,0,0"/>
 
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="12"/>
-                    </Border.StrokeShape>
+                    <Button
+                        Text="Utwórz konto"
+                        BackgroundColor="{StaticResource Porcelain}"
+                        BorderColor="{StaticResource CharcoalBrown}"
+                        TextColor="{StaticResource CharcoalBrown}"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                        CornerRadius="12"
+                        WidthRequest="300"
+                        HeightRequest="52"
+                        Margin="0,10,0,0"
+                        Clicked="CreateAccountButtonClicked"/>
 
-                    <Entry
-                        x:Name="RegisterPasswordEntry2Nd"
-                        PlaceholderColor="Grey"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Placeholder="Powtórz Hasło"
-                        IsPassword="True"
-                        BackgroundColor="Transparent"
-                        TextColor="Black"
-                        Margin="8,0"/>
-                </Border>
-                
-                <Button
-                    Text="Zarejestruj się"
-                    BackgroundColor="{StaticResource Porcelain}"
-                    BorderColor="{StaticResource CharcoalBrown}"
-                    TextColor="{StaticResource CharcoalBrown}"
-                    BorderWidth="1"
-                    CornerRadius="10"
-                    WidthRequest="300"
-                    HeightRequest="52"
-                    Clicked="RegisterButtonClicked"/>
-            </VerticalStackLayout>
-        </Border>
+                    <Label HorizontalOptions="Center" Margin="0,10,0,0" TextColor="White" FontSize="14">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Masz już konto? "/>
+                                <Span Text="Zaloguj się" FontAttributes="Bold" TextDecorations="Underline"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SwitchToLogin"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
     </Grid>
 </ContentPage>
