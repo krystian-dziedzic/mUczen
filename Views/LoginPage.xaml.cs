@@ -12,9 +12,6 @@
             TopSection.Opacity = 0;
             BottomSection.Opacity = 0;
         }
-
-        // ========================= ANIMACJE =========================
-
         protected override async void OnAppearing()
         {
             base.OnAppearing();
@@ -28,7 +25,6 @@
                 BottomSection.FadeToAsync(1, 700, Easing.CubicOut),
                 BottomSection.TranslateToAsync(0, 0, 700, Easing.CubicOut));
         }
-
         private async void Animate_Logo(object sender, EventArgs e)
         {
             int myId = ++_logoAnimationId;
@@ -39,14 +35,10 @@
                 await Logo.ScaleToAsync(1.0, 1000, Easing.SinInOut);
             }
         }
-
         private void Stop_Logo(object sender, EventArgs e)
         {
             _logoAnimationId++;
         }
-
-        // ========================= POPUPY =========================
-
         private async Task ShowPopup(VisualElement popup)
         {
             if (_isAnimatingPopup) return;
@@ -117,9 +109,6 @@
             }
             return base.OnBackButtonPressed();
         }
-
-        // ========================= POLA FORMULARZY =========================
-
         private void TogglePasswordVisibility(object sender, TappedEventArgs e)
         {
             if (sender is not Label label) return;
@@ -129,7 +118,6 @@
             entry.IsPassword = !entry.IsPassword;
             label.Text = entry.IsPassword ? "Pokaż" : "Ukryj";
         }
-
         private void EntryCompleted(object sender, EventArgs e)
         {
             if (sender == StudentIdCardEntry)
@@ -145,9 +133,6 @@
             else if (sender == CreateAccountPasswordEntry)
                 CreateAccountButtonClicked(sender, e);
         }
-
-        // ========================= LOGIKA =========================
-
         private void CreateAccountButtonClicked(object sender, EventArgs e)
         {
             // REJESTRACJA
