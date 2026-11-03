@@ -4,52 +4,6 @@
              Shell.NavBarIsVisible="False"
              x:Class="mUczen.Views.LoginPage">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-
-            <Style x:Key="FieldLabel" TargetType="Label">
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontSize" Value="13"/>
-                <Setter Property="Opacity" Value="0.85"/>
-                <Setter Property="Margin" Value="4,0,0,0"/>
-            </Style>
-
-            <Style x:Key="FieldBorder" TargetType="Border">
-                <Setter Property="WidthRequest" Value="300"/>
-                <Setter Property="HeightRequest" Value="52"/>
-                <Setter Property="BackgroundColor" Value="White"/>
-                <Setter Property="StrokeThickness" Value="0"/>
-            </Style>
-
-            <Style x:Key="FieldEntry" TargetType="Entry">
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-                <Setter Property="TextColor" Value="{StaticResource CharcoalBrown}"/>
-                <Setter Property="PlaceholderColor" Value="Grey"/>
-                <Setter Property="VerticalOptions" Value="Center"/>
-                <Setter Property="Margin" Value="12,0,0,0"/>
-            </Style>
-
-            <Style x:Key="ShowPasswordLabel" TargetType="Label">
-                <Setter Property="Text" Value="Pokaż"/>
-                <Setter Property="TextColor" Value="{StaticResource Cerulean}"/>
-                <Setter Property="FontSize" Value="13"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="VerticalOptions" Value="Center"/>
-                <Setter Property="Margin" Value="8,0,14,0"/>
-            </Style>
-
-            <Style x:Key="BackButton" TargetType="Button">
-                <Setter Property="Text" Value="‹  Wróć"/>
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontSize" Value="16"/>
-                <Setter Property="HorizontalOptions" Value="Start"/>
-                <Setter Property="Margin" Value="10,10,0,0"/>
-            </Style>
-
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
     <Grid BackgroundColor="{StaticResource Porcelain}"
           RowDefinitions="*,Auto,Auto"
           x:Name="MainGrid">
@@ -208,7 +162,15 @@
                 Margin="-60,0,0,-40"
                 InputTransparent="True"/>
 
-            <Button Grid.Row="0" Style="{StaticResource BackButton}" Clicked="CloseLoginPopup"/>
+            <Button
+                Grid.Row="0"
+                Text="‹  Wróć"
+                BackgroundColor="Transparent"
+                TextColor="White"
+                FontSize="16"
+                HorizontalOptions="Start"
+                Margin="10,10,0,0"
+                Clicked="CloseLoginPopup"/>
 
             <ScrollView Grid.Row="1" VerticalOptions="Center">
                 <VerticalStackLayout Spacing="12" Padding="20" HorizontalOptions="Center">
@@ -227,23 +189,51 @@
                         HorizontalOptions="Center"
                         Margin="0,0,0,15"/>
 
-                    <Label Text="Numer legitymacji" Style="{StaticResource FieldLabel}"/>
-                    <Border Style="{StaticResource FieldBorder}" StrokeShape="RoundRectangle 12">
+                    <Label
+                        Text="Numer legitymacji"
+                        TextColor="White"
+                        FontSize="13"
+                        Opacity="0.85"
+                        Margin="4,0,0,0"/>
+                    <Border
+                        WidthRequest="300"
+                        HeightRequest="52"
+                        BackgroundColor="White"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12">
                         <Entry
                             x:Name="StudentIdCardEntry"
-                            Style="{StaticResource FieldEntry}"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource CharcoalBrown}"
+                            PlaceholderColor="Grey"
+                            VerticalOptions="Center"
+                            Margin="12,0,0,0"
                             Placeholder="Numer legitymacji"
                             Keyboard="Numeric"
                             ReturnType="Next"
                             Completed="EntryCompleted"/>
                     </Border>
 
-                    <Label Text="Hasło" Style="{StaticResource FieldLabel}" Margin="4,6,0,0"/>
-                    <Border Style="{StaticResource FieldBorder}" StrokeShape="RoundRectangle 12">
+                    <Label
+                        Text="Hasło"
+                        TextColor="White"
+                        FontSize="13"
+                        Opacity="0.85"
+                        Margin="4,6,0,0"/>
+                    <Border
+                        WidthRequest="300"
+                        HeightRequest="52"
+                        BackgroundColor="White"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12">
                         <Grid ColumnDefinitions="*,Auto">
                             <Entry
                                 x:Name="PasswordEntry"
-                                Style="{StaticResource FieldEntry}"
+                                BackgroundColor="Transparent"
+                                TextColor="{StaticResource CharcoalBrown}"
+                                PlaceholderColor="Grey"
+                                VerticalOptions="Center"
+                                Margin="12,0,0,0"
                                 Placeholder="Hasło"
                                 IsPassword="True"
                                 ReturnType="Done"
@@ -251,10 +241,13 @@
                             <Label
                                 x:Name="LoginShowPasswordLabel"
                                 Grid.Column="1"
-                                Style="{StaticResource ShowPasswordLabel}">
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="TogglePasswordVisibility"/>
-                                </Label.GestureRecognizers>
+                                Text="Pokaż"
+                                TextColor="{StaticResource Cerulean}"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                VerticalOptions="Center"
+                                Margin="8,0,14,0">
+                                <!-- TODO: zaimplementować TapGestureRecognizer (TogglePasswordVisibility) -->
                             </Label>
                         </Grid>
                     </Border>
@@ -280,9 +273,7 @@
                                 <Span Text="Utwórz je" FontAttributes="Bold" TextDecorations="Underline"/>
                             </FormattedString>
                         </Label.FormattedText>
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="SwitchToRegister"/>
-                        </Label.GestureRecognizers>
+                        <!-- TODO: zaimplementować TapGestureRecognizer (SwitchToRegister) -->
                     </Label>
 
                 </VerticalStackLayout>
@@ -317,7 +308,15 @@
                 Margin="0,0,-60,-40"
                 InputTransparent="True"/>
 
-            <Button Grid.Row="0" Style="{StaticResource BackButton}" Clicked="CloseRegisterPopup"/>
+            <Button
+                Grid.Row="0"
+                Text="‹  Wróć"
+                BackgroundColor="Transparent"
+                TextColor="White"
+                FontSize="16"
+                HorizontalOptions="Start"
+                Margin="10,10,0,0"
+                Clicked="CloseRegisterPopup"/>
 
             <ScrollView Grid.Row="1" VerticalOptions="Center">
                 <VerticalStackLayout Spacing="12" Padding="20" HorizontalOptions="Center">
@@ -338,45 +337,101 @@
                         WidthRequest="300"
                         Margin="0,0,0,10"/>
 
-                    <Label Text="Imię" Style="{StaticResource FieldLabel}"/>
-                    <Border Style="{StaticResource FieldBorder}" StrokeShape="RoundRectangle 12">
+                    <Label
+                        Text="Imię"
+                        TextColor="White"
+                        FontSize="13"
+                        Opacity="0.85"
+                        Margin="4,0,0,0"/>
+                    <Border
+                        WidthRequest="300"
+                        HeightRequest="52"
+                        BackgroundColor="White"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12">
                         <Entry
                             x:Name="CreateAccountFirstName"
-                            Style="{StaticResource FieldEntry}"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource CharcoalBrown}"
+                            PlaceholderColor="Grey"
+                            VerticalOptions="Center"
+                            Margin="12,0,0,0"
                             Keyboard="Text"
                             Placeholder="Imię"
                             ReturnType="Next"
                             Completed="EntryCompleted"/>
                     </Border>
 
-                    <Label Text="Nazwisko" Style="{StaticResource FieldLabel}" Margin="4,6,0,0"/>
-                    <Border Style="{StaticResource FieldBorder}" StrokeShape="RoundRectangle 12">
+                    <Label
+                        Text="Nazwisko"
+                        TextColor="White"
+                        FontSize="13"
+                        Opacity="0.85"
+                        Margin="4,6,0,0"/>
+                    <Border
+                        WidthRequest="300"
+                        HeightRequest="52"
+                        BackgroundColor="White"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12">
                         <Entry
                             x:Name="CreateAccountLastName"
-                            Style="{StaticResource FieldEntry}"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource CharcoalBrown}"
+                            PlaceholderColor="Grey"
+                            VerticalOptions="Center"
+                            Margin="12,0,0,0"
                             Keyboard="Text"
                             Placeholder="Nazwisko"
                             ReturnType="Next"
                             Completed="EntryCompleted"/>
                     </Border>
 
-                    <Label Text="Numer legitymacji" Style="{StaticResource FieldLabel}" Margin="4,6,0,0"/>
-                    <Border Style="{StaticResource FieldBorder}" StrokeShape="RoundRectangle 12">
+                    <Label
+                        Text="Numer legitymacji"
+                        TextColor="White"
+                        FontSize="13"
+                        Opacity="0.85"
+                        Margin="4,6,0,0"/>
+                    <Border
+                        WidthRequest="300"
+                        HeightRequest="52"
+                        BackgroundColor="White"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12">
                         <Entry
                             x:Name="CreateAccountStudentIdCardEntry"
-                            Style="{StaticResource FieldEntry}"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource CharcoalBrown}"
+                            PlaceholderColor="Grey"
+                            VerticalOptions="Center"
+                            Margin="12,0,0,0"
                             Keyboard="Numeric"
                             Placeholder="Numer legitymacji"
                             ReturnType="Next"
                             Completed="EntryCompleted"/>
                     </Border>
 
-                    <Label Text="Hasło" Style="{StaticResource FieldLabel}" Margin="4,6,0,0"/>
-                    <Border Style="{StaticResource FieldBorder}" StrokeShape="RoundRectangle 12">
+                    <Label
+                        Text="Hasło"
+                        TextColor="White"
+                        FontSize="13"
+                        Opacity="0.85"
+                        Margin="4,6,0,0"/>
+                    <Border
+                        WidthRequest="300"
+                        HeightRequest="52"
+                        BackgroundColor="White"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12">
                         <Grid ColumnDefinitions="*,Auto">
                             <Entry
                                 x:Name="CreateAccountPasswordEntry"
-                                Style="{StaticResource FieldEntry}"
+                                BackgroundColor="Transparent"
+                                TextColor="{StaticResource CharcoalBrown}"
+                                PlaceholderColor="Grey"
+                                VerticalOptions="Center"
+                                Margin="12,0,0,0"
                                 Keyboard="Default"
                                 IsPassword="True"
                                 Placeholder="Hasło"
@@ -385,10 +440,13 @@
                             <Label
                                 x:Name="RegisterShowPasswordLabel"
                                 Grid.Column="1"
-                                Style="{StaticResource ShowPasswordLabel}">
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="TogglePasswordVisibility"/>
-                                </Label.GestureRecognizers>
+                                Text="Pokaż"
+                                TextColor="{StaticResource Cerulean}"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                VerticalOptions="Center"
+                                Margin="8,0,14,0">
+                                <!-- TODO: zaimplementować TapGestureRecognizer (TogglePasswordVisibility) -->
                             </Label>
                         </Grid>
                     </Border>
@@ -420,9 +478,7 @@
                                 <Span Text="Zaloguj się" FontAttributes="Bold" TextDecorations="Underline"/>
                             </FormattedString>
                         </Label.FormattedText>
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="SwitchToLogin"/>
-                        </Label.GestureRecognizers>
+                        <!-- TODO: zaimplementować TapGestureRecognizer (SwitchToLogin) -->
                     </Label>
 
                 </VerticalStackLayout>
