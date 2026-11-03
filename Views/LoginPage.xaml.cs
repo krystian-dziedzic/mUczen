@@ -1,4 +1,8 @@
-﻿namespace mUczen.Views
+﻿using mUczen.Services;
+using mUczen.Models;
+using SQLite;
+using Microsoft.AspNetCore.Identity;
+namespace mUczen.Views
 {
     public partial class LoginPage : ContentPage
     {
