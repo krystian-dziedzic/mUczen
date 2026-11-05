@@ -10,7 +10,7 @@ namespace mUczen.Services
 {
     public class Database
     {
-        public static SQLiteConnection Connection = new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Resources.Constants.DatabaseFilename));
+        internal static SQLiteConnection Connection = new SQLiteConnection(Constants.DatabasePath);
         public static void Initialize()
         {
             Connection.CreateTable<Grade>();
