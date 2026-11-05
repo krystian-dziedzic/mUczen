@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Shell.NavBarIsVisible="False"
              x:Class="mUczen.Views.LoginPage">
 
     <Grid BackgroundColor="{StaticResource Porcelain}"
@@ -15,7 +16,17 @@
             Opacity="0.08"
             HorizontalOptions="Start"
             VerticalOptions="Start"
-            Margin="-70,-50,0,0"/>
+            Margin="-70,-50,0,0"
+            InputTransparent="True"/>
+        <Ellipse
+            WidthRequest="110"
+            HeightRequest="110"
+            Fill="{StaticResource Cerulean}"
+            Opacity="0.06"
+            HorizontalOptions="End"
+            VerticalOptions="Start"
+            Margin="0,90,-40,0"
+            InputTransparent="True"/>
         <Ellipse
             WidthRequest="130"
             HeightRequest="130"
@@ -23,10 +34,12 @@
             Opacity="0.06"
             HorizontalOptions="End"
             VerticalOptions="End"
-            Margin="0,0,-40,-30"/>
+            Margin="0,0,-40,-30"
+            InputTransparent="True"/>
 
         <!-- TOP -->
         <VerticalStackLayout
+            x:Name="TopSection"
             Grid.Row="0"
             VerticalOptions="Center"
             HorizontalOptions="Center"
@@ -52,6 +65,7 @@
                 <Image
                     x:Name="Logo"
                     Loaded="Animate_Logo"
+                    Unloaded="Stop_Logo"
                     Source="student_logo_placeholder.png"
                     Aspect="AspectFit"/>
             </Border>
@@ -71,6 +85,7 @@
 
         <!-- BOTTOM -->
         <VerticalStackLayout
+            x:Name="BottomSection"
             Grid.Row="2"
             Spacing="12"
             Padding="20,15,20,30"
@@ -79,33 +94,27 @@
             <Button
                 x:Name="LoginButton"
                 Text="Zaloguj się"
+                TextColor="White"
                 BackgroundColor="{StaticResource Cerulean}"
                 CornerRadius="12"
                 WidthRequest="300"
                 HeightRequest="52"
                 FontSize="16"
                 FontAttributes="Bold"
-                Clicked="DisplayLoginPopup"/>
-            <!-- Entry placeholders -->
-            <Entry
-                x:Name="CreateAccountPasswordEntry"
-                Keyboard="Password"
-                Placeholder="Hasło"/>
-            <Entry
-                x:Name="CreateAccountStudentIdCardEntry"
-                Keyboard="Numeric"
-                Placeholder="Numer legitymacji"/>
-            <Entry
-                x:Name="CreateAccountFirstName"
-                Keyboard="Text"
-                Placeholder="Imię"/>
-            <Entry
-                x:Name="CreateAccountLastName"
-                Keyboard="Text"
-                Placeholder="Nazwisko"/>
+                Clicked="DisplayLoginPopup">
+                <Button.Shadow>
+                    <Shadow
+                        Brush="{StaticResource Cerulean}"
+                        Opacity="0.35"
+                        Radius="14"
+                        Offset="0,6"/>
+                </Button.Shadow>
+            </Button>
+
             <Button
+                x:Name="RegisterButton"
                 Text="Utwórz konto"
-                Clicked="CreateAccountButtonClicked"
+                Clicked="DisplayRegisterPopup"
                 BorderColor="{StaticResource CharcoalBrown}"
                 BorderWidth="1"
                 BackgroundColor="Transparent"
@@ -126,88 +135,354 @@
         </VerticalStackLayout>
 
         <!-- LOGIN POPUP -->
-        <Border
-            Grid.RowSpan="3"
+        <Grid
             x:Name="LoginPopup"
+            Grid.RowSpan="3"
+            RowDefinitions="Auto,*"
             BackgroundColor="{StaticResource Cerulean}"
-            Padding="20"
-            IsVisible="False"
-            HorizontalOptions="Fill"
-            VerticalOptions="Fill"
-            StrokeThickness="0">
+            IsVisible="False">
 
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="18"/>
-            </Border.StrokeShape>
+            <Ellipse
+                WidthRequest="220"
+                HeightRequest="220"
+                Fill="White"
+                Opacity="0.07"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                Margin="0,-70,-80,0"
+                InputTransparent="True"/>
+            <Ellipse
+                Grid.RowSpan="2"
+                WidthRequest="160"
+                HeightRequest="160"
+                Fill="White"
+                Opacity="0.06"
+                HorizontalOptions="Start"
+                VerticalOptions="End"
+                Margin="-60,0,0,-40"
+                InputTransparent="True"/>
 
-            <Border.Shadow>
-                <Shadow
-                    Brush="Black"
-                    Opacity="0.15"
-                    Radius="15"
-                    Offset="0,6"/>
-            </Border.Shadow>
+            <Button
+                Grid.Row="0"
+                Text="‹  Wróć"
+                BackgroundColor="Transparent"
+                TextColor="White"
+                FontSize="16"
+                HorizontalOptions="Start"
+                Margin="10,10,0,0"
+                Clicked="CloseLoginPopup"/>
 
-            <VerticalStackLayout Spacing="12" VerticalOptions="Center">
-                <Label
-                    Text="Zaloguj się"
-                    FontSize="24"
-                    FontAttributes="Bold"
-                    Margin="0, 0, 0, 15"
-                    HorizontalOptions="Center"/>
-                <Border
-                    WidthRequest="300"
-                    HeightRequest="52"
-                    BackgroundColor="White"
-                    StrokeThickness="0">
+            <ScrollView Grid.Row="1" VerticalOptions="Center">
+                <VerticalStackLayout Spacing="12" Padding="20" HorizontalOptions="Center">
 
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="12"/>
-                    </Border.StrokeShape>
-
-                    <Entry
-                        x:Name="StudentIdCardEntry"
-                        PlaceholderColor="Grey"
+                    <Label
+                        Text="Witaj ponownie!"
+                        FontSize="28"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        HorizontalOptions="Center"/>
+                    <Label
+                        Text="Zaloguj się numerem legitymacji"
+                        FontSize="14"
+                        TextColor="White"
+                        Opacity="0.8"
                         HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Placeholder="Numer legitymacji"
-                        BackgroundColor="Transparent"
-                        TextColor="Black"
-                        Margin="8,0"/>
-                </Border>
-                
-                <Border
-                    WidthRequest="300"
-                    HeightRequest="52"
-                    BackgroundColor="White"
-                    StrokeThickness="0">
+                        Margin="0,0,0,15"/>
 
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="12"/>
-                    </Border.StrokeShape>
+                    <Label
+                        Text="Numer legitymacji"
+                        TextColor="White"
+                        FontSize="13"
+                        Opacity="0.85"
+                        Margin="4,0,0,0"/>
+                    <Border
+                        WidthRequest="300"
+                        HeightRequest="52"
+                        BackgroundColor="White"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12">
+                        <Entry
+                            x:Name="StudentIdCardEntry"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource CharcoalBrown}"
+                            PlaceholderColor="Grey"
+                            VerticalOptions="Center"
+                            Margin="12,0,0,0"
+                            Placeholder="Numer legitymacji"
+                            Keyboard="Numeric"
+                            ReturnType="Next"
+                            Completed="EntryCompleted"/>
+                    </Border>
 
-                    <Entry
-                        x:Name="PasswordEntry"
-                        PlaceholderColor="Grey"
+                    <Label
+                        Text="Hasło"
+                        TextColor="White"
+                        FontSize="13"
+                        Opacity="0.85"
+                        Margin="4,6,0,0"/>
+                    <Border
+                        WidthRequest="300"
+                        HeightRequest="52"
+                        BackgroundColor="White"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Entry
+                                x:Name="PasswordEntry"
+                                BackgroundColor="Transparent"
+                                TextColor="{StaticResource CharcoalBrown}"
+                                PlaceholderColor="Grey"
+                                VerticalOptions="Center"
+                                Margin="12,0,0,0"
+                                Placeholder="Hasło"
+                                IsPassword="True"
+                                ReturnType="Done"
+                                Completed="EntryCompleted"/>
+                            <Label
+                                x:Name="LoginShowPasswordLabel"
+                                Grid.Column="1"
+                                Text="Pokaż"
+                                TextColor="{StaticResource Cerulean}"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                VerticalOptions="Center"
+                                Margin="8,0,14,0">
+                                <!-- TODO: zaimplementować TapGestureRecognizer (TogglePasswordVisibility) -->
+                            </Label>
+                        </Grid>
+                    </Border>
+
+                    <Button
+                        Text="Zaloguj się"
+                        BackgroundColor="{StaticResource Porcelain}"
+                        BorderColor="{StaticResource CharcoalBrown}"
+                        TextColor="{StaticResource CharcoalBrown}"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                        CornerRadius="12"
+                        WidthRequest="300"
+                        HeightRequest="52"
+                        Margin="0,15,0,0"
+                        Clicked="LoginButtonClicked"/>
+
+                    <Label HorizontalOptions="Center" Margin="0,10,0,0" TextColor="White" FontSize="14">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Nie masz konta? "/>
+                                <Span Text="Utwórz je" FontAttributes="Bold" TextDecorations="Underline"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                        <!-- TODO: zaimplementować TapGestureRecognizer (SwitchToRegister) -->
+                    </Label>
+
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
+
+        <!-- REGISTER POPUP -->
+        <Grid
+            x:Name="RegisterPopup"
+            Grid.RowSpan="3"
+            RowDefinitions="Auto,*"
+            BackgroundColor="{StaticResource Cerulean}"
+            IsVisible="False">
+
+            <Ellipse
+                WidthRequest="220"
+                HeightRequest="220"
+                Fill="White"
+                Opacity="0.07"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                Margin="-90,-70,0,0"
+                InputTransparent="True"/>
+            <Ellipse
+                Grid.RowSpan="2"
+                WidthRequest="160"
+                HeightRequest="160"
+                Fill="White"
+                Opacity="0.06"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Margin="0,0,-60,-40"
+                InputTransparent="True"/>
+
+            <Button
+                Grid.Row="0"
+                Text="‹  Wróć"
+                BackgroundColor="Transparent"
+                TextColor="White"
+                FontSize="16"
+                HorizontalOptions="Start"
+                Margin="10,10,0,0"
+                Clicked="CloseRegisterPopup"/>
+
+            <ScrollView Grid.Row="1" VerticalOptions="Center">
+                <VerticalStackLayout Spacing="12" Padding="20" HorizontalOptions="Center">
+
+                    <Label
+                        Text="Utwórz konto"
+                        FontSize="28"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        HorizontalOptions="Center"/>
+                    <Label
+                        Text="Uzupełnij dane i zacznij korzystać z mUczenia"
+                        FontSize="14"
+                        TextColor="White"
+                        Opacity="0.8"
                         HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Placeholder="Hasło"
-                        IsPassword="True"
-                        BackgroundColor="Transparent"
-                        TextColor="Black"
-                        Margin="8,0"/>
-                </Border>
-                <Button
-                    Text="Zaloguj się"
-                    BackgroundColor="{StaticResource Porcelain}"
-                    BorderColor="{StaticResource CharcoalBrown}"
-                    TextColor="{StaticResource CharcoalBrown}"
-                    BorderWidth="1"
-                    CornerRadius="10"
-                    WidthRequest="300"
-                    HeightRequest="52"
-                    Clicked="LoginButtonClicked"/>
-            </VerticalStackLayout>
-        </Border>
+                        HorizontalTextAlignment="Center"
+                        WidthRequest="300"
+                        Margin="0,0,0,10"/>
+
+                    <Label
+                        Text="Imię"
+                        TextColor="White"
+                        FontSize="13"
+                        Opacity="0.85"
+                        Margin="4,0,0,0"/>
+                    <Border
+                        WidthRequest="300"
+                        HeightRequest="52"
+                        BackgroundColor="White"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12">
+                        <Entry
+                            x:Name="CreateAccountFirstName"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource CharcoalBrown}"
+                            PlaceholderColor="Grey"
+                            VerticalOptions="Center"
+                            Margin="12,0,0,0"
+                            Keyboard="Text"
+                            Placeholder="Imię"
+                            ReturnType="Next"
+                            Completed="EntryCompleted"/>
+                    </Border>
+
+                    <Label
+                        Text="Nazwisko"
+                        TextColor="White"
+                        FontSize="13"
+                        Opacity="0.85"
+                        Margin="4,6,0,0"/>
+                    <Border
+                        WidthRequest="300"
+                        HeightRequest="52"
+                        BackgroundColor="White"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12">
+                        <Entry
+                            x:Name="CreateAccountLastName"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource CharcoalBrown}"
+                            PlaceholderColor="Grey"
+                            VerticalOptions="Center"
+                            Margin="12,0,0,0"
+                            Keyboard="Text"
+                            Placeholder="Nazwisko"
+                            ReturnType="Next"
+                            Completed="EntryCompleted"/>
+                    </Border>
+
+                    <Label
+                        Text="Numer legitymacji"
+                        TextColor="White"
+                        FontSize="13"
+                        Opacity="0.85"
+                        Margin="4,6,0,0"/>
+                    <Border
+                        WidthRequest="300"
+                        HeightRequest="52"
+                        BackgroundColor="White"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12">
+                        <Entry
+                            x:Name="CreateAccountStudentIdCardEntry"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource CharcoalBrown}"
+                            PlaceholderColor="Grey"
+                            VerticalOptions="Center"
+                            Margin="12,0,0,0"
+                            Keyboard="Numeric"
+                            Placeholder="Numer legitymacji"
+                            ReturnType="Next"
+                            Completed="EntryCompleted"/>
+                    </Border>
+
+                    <Label
+                        Text="Hasło"
+                        TextColor="White"
+                        FontSize="13"
+                        Opacity="0.85"
+                        Margin="4,6,0,0"/>
+                    <Border
+                        WidthRequest="300"
+                        HeightRequest="52"
+                        BackgroundColor="White"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Entry
+                                x:Name="CreateAccountPasswordEntry"
+                                BackgroundColor="Transparent"
+                                TextColor="{StaticResource CharcoalBrown}"
+                                PlaceholderColor="Grey"
+                                VerticalOptions="Center"
+                                Margin="12,0,0,0"
+                                Keyboard="Default"
+                                IsPassword="True"
+                                Placeholder="Hasło"
+                                ReturnType="Done"
+                                Completed="EntryCompleted"/>
+                            <Label
+                                x:Name="RegisterShowPasswordLabel"
+                                Grid.Column="1"
+                                Text="Pokaż"
+                                TextColor="{StaticResource Cerulean}"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                VerticalOptions="Center"
+                                Margin="8,0,14,0">
+                                <!-- TODO: zaimplementować TapGestureRecognizer (TogglePasswordVisibility) -->
+                            </Label>
+                        </Grid>
+                    </Border>
+                    <Label
+                        Text="Hasło powinno mieć co najmniej 8 znaków"
+                        FontSize="12"
+                        TextColor="White"
+                        Opacity="0.7"
+                        Margin="4,-6,0,0"/>
+
+                    <Button
+                        Text="Utwórz konto"
+                        BackgroundColor="{StaticResource Porcelain}"
+                        BorderColor="{StaticResource CharcoalBrown}"
+                        TextColor="{StaticResource CharcoalBrown}"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                        CornerRadius="12"
+                        WidthRequest="300"
+                        HeightRequest="52"
+                        Margin="0,10,0,0"
+                        Clicked="CreateAccountButtonClicked"/>
+
+                    <Label HorizontalOptions="Center" Margin="0,10,0,0" TextColor="White" FontSize="14">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Masz już konto? "/>
+                                <Span Text="Zaloguj się" FontAttributes="Bold" TextDecorations="Underline"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                        <!-- TODO: zaimplementować TapGestureRecognizer (SwitchToLogin) -->
+                    </Label>
+
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
     </Grid>
 </ContentPage>
