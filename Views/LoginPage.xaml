@@ -3,6 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="mUczen.Views.LoginPage">
 
+    <!--
+    MAKE THE LOGIN PAGE'S DATA RELATIVE TO THE MODEL FIELDS
+    TO MAKE TS WORK
+    -->
     <Grid BackgroundColor="{StaticResource Porcelain}"
           RowDefinitions="*,Auto,Auto"
           x:Name="MainGrid">
