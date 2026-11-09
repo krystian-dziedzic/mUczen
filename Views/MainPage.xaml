@@ -52,7 +52,7 @@
                         <Border Grid.Column="0"
                                 StrokeShape="RoundRectangle 10"
                                 VerticalOptions="Center">
-                            <Image Source="placeholder.jpg" MaximumHeightRequest="150"/>
+                            <Image Source="avatar_placeholder.svg" MaximumHeightRequest="150"/>
                         </Border>
 
                         <VerticalStackLayout Grid.Column="1"
@@ -60,10 +60,10 @@
                                              VerticalOptions="Center">
 
                             <Label Text="Legitymacja uczniowska" FontSize="Medium"/>
-                            <Label Text="Wojciech Kapera" FontSize="Large" FontAttributes="Bold"/>
+                            <Label x:Name="CardFullNameLabel" Text="Wojciech Kapera" FontSize="Large" FontAttributes="Bold"/>
                             <Label Text="Zespół szkół technicznych"/>
                             <Label Text="Nr legitymacji:"/>
-                            <Label Text="213769420"/>
+                            <Label x:Name="CardStudentIdLabel" Text="213769420"/>
 
                         </VerticalStackLayout>
 
@@ -75,7 +75,7 @@
                             <Label
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center"
-                                Text="WAŻNA DO: 10.10.2100"/>
+                                Text="WAŻNA DO: 31.08.2027"/>
                         </Border>
                     </Grid>
                 </Border>
