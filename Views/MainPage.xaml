@@ -52,7 +52,7 @@
                         <Border Grid.Column="0"
                                 StrokeShape="RoundRectangle 10"
                                 VerticalOptions="Center">
-                            <Image Source="placeholder.jpg" MaximumHeightRequest="150"/>
+                            <Image Source="avatar_placeholder.svg" MaximumHeightRequest="150"/>
                         </Border>
 
                         <VerticalStackLayout Grid.Column="1"
@@ -60,10 +60,10 @@
                                              VerticalOptions="Center">
 
                             <Label Text="Legitymacja uczniowska" FontSize="Medium"/>
-                            <Label Text="Wojciech Kapera" FontSize="Large" FontAttributes="Bold"/>
-                            <Label Text="Zespół szkół technicznych"/>
+                            <Label x:Name="CardFullNameLabel" Text="Wojciech Kapera" FontSize="Large" FontAttributes="Bold"/>
+                            <Label x:Name="CardSchoolLabel" Text="Zespół szkół technicznych"/>
                             <Label Text="Nr legitymacji:"/>
-                            <Label Text="213769420"/>
+                            <Label x:Name="CardStudentIdLabel" Text="213769420"/>
 
                         </VerticalStackLayout>
 
@@ -75,11 +75,11 @@
                             <Label
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center"
-                                Text="WAŻNA DO: 10.10.2100"/>
+                                Text="WAŻNA DO: 31.08.2027"/>
                         </Border>
                     </Grid>
                 </Border>
-                <!-- GRID MENU BUTTONS ( NOT WORKING YET ) -->
+                <!-- GRID MENU BUTTONS -->
                 <Grid
                     ColumnDefinitions="*, *, *"
                     RowDefinitions="*, *"
@@ -99,8 +99,10 @@
                                 Radius="20"
                                 Offset="0,8"/>
                         </Border.Shadow>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OpenGrades"/>
+                        </Border.GestureRecognizers>
                         <VerticalStackLayout VerticalOptions="Center" Spacing="10">
-                            <!-- IMPLEMENT GESTURE RECOGNIZER -->
                             <Image Source="grades.svg"
                                 HeightRequest="70"
                                 WidthRequest="70"/>
@@ -125,8 +127,10 @@
                                 Radius="20"
                                 Offset="0,8"/>
                         </Border.Shadow>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OpenAttendance"/>
+                        </Border.GestureRecognizers>
                         <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10" Margin="10">
-                            <!-- IMPLEMENT GESTURE RECOGNIZER -->
                             <Image Source="abscence.svg"
                                 HeightRequest="70"
                                 WidthRequest="70"/>
@@ -150,8 +154,10 @@
                                 Radius="20"
                                 Offset="0,8"/>
                         </Border.Shadow>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OpenSchedule"/>
+                        </Border.GestureRecognizers>
                         <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
-                            <!-- IMPLEMENT GESTURE RECOGNIZER -->
                             <Image Source="lessons.svg"
                                 HeightRequest="70"
                                 WidthRequest="70"/>
@@ -176,8 +182,10 @@
                                 Radius="20"
                                 Offset="0,8"/>
                         </Border.Shadow>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OpenHomework"/>
+                        </Border.GestureRecognizers>
                         <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
-                            <!-- IMPLEMENT GESTURE RECOGNIZER -->
                             <Image Source="homework.svg"
                                 HeightRequest="70"
                                 WidthRequest="70"/>
@@ -201,8 +209,10 @@
                                 Radius="20"
                                 Offset="0,8"/>
                         </Border.Shadow>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OpenAnnouncements"/>
+                        </Border.GestureRecognizers>
                         <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10" Margin="10">
-                            <!-- IMPLEMENT GESTURE RECOGNIZER -->
                             <Image Source="announcements.svg"
                                 HeightRequest="70"
                                 WidthRequest="70"/>
@@ -226,8 +236,10 @@
                                 Radius="20"
                                 Offset="0,8"/>
                         </Border.Shadow>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OpenMore"/>
+                        </Border.GestureRecognizers>
                         <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
-                            <!-- IMPLEMENT GESTURE RECOGNIZER -->
                             <Image Source="more.svg"
                                 HeightRequest="70"
                                 WidthRequest="70"/>
@@ -319,7 +331,7 @@
             </VerticalStackLayout>
         </ScrollView>
 
-        <!-- DOCK ( NOT WORKING YET ) -->
+        <!-- DOCK -->
         <Border Grid.Row="1"
                 BackgroundColor="{StaticResource Porcelain}"
                 StrokeThickness="0"
@@ -337,9 +349,7 @@
 
                 <!-- HOME ( SELECTED ) -->
                 <VerticalStackLayout Grid.Column="0" Spacing="4" HorizontalOptions="Center">
-                    <!-- IMPLEMENT GESTURE RECOGNIZER -->
-                    <!-- INSERT ICON -->
-                    <Image WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
+                    <Image Source="home.svg" WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
                     <Label Text="Główna"
                            FontSize="11"
                            FontAttributes="Bold"
@@ -350,9 +360,10 @@
 
                 <!-- GRADES -->
                 <VerticalStackLayout Grid.Column="1" Spacing="4" HorizontalOptions="Center">
-                    <!-- IMPLEMENT GESTURE RECOGNIZER -->
-                    <!-- INSERT ICON -->
-                    <Image WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OpenGrades"/>
+                    </VerticalStackLayout.GestureRecognizers>
+                    <Image Source="grades.svg" WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
                     <Label Text="Oceny"
                            FontSize="11"
                            TextColor="{StaticResource CharcoalBrown}"
@@ -363,9 +374,10 @@
 
                 <!-- TIMETABLE -->
                 <VerticalStackLayout Grid.Column="2" Spacing="4" HorizontalOptions="Center">
-                    <!-- IMPLEMENT GESTURE RECOGNIZER -->
-                    <!-- INSERT ICON -->
-                    <Image WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OpenSchedule"/>
+                    </VerticalStackLayout.GestureRecognizers>
+                    <Image Source="lessons.svg" WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
                     <Label Text="Plan"
                            FontSize="11"
                            TextColor="{StaticResource CharcoalBrown}"
@@ -373,12 +385,13 @@
                            HorizontalOptions="Center"
                            LineBreakMode="NoWrap"/>
                 </VerticalStackLayout>
-                
+
                 <!-- HOMEWORK -->
                 <VerticalStackLayout Grid.Column="3" Spacing="4" HorizontalOptions="Center">
-                    <!-- IMPLEMENT GESTURE RECOGNIZER -->
-                    <!-- INSERT ICON -->
-                    <Image WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OpenHomework"/>
+                    </VerticalStackLayout.GestureRecognizers>
+                    <Image Source="homework.svg" WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
                     <Label Text="Zadania"
                            FontSize="11"
                            TextColor="{StaticResource CharcoalBrown}"
@@ -389,9 +402,10 @@
 
                 <!-- MORE -->
                 <VerticalStackLayout Grid.Column="4" Spacing="4" HorizontalOptions="Center">
-                    <!-- IMPLEMENT GESTURE RECOGNIZER -->
-                    <!-- INSERT ICON -->
-                    <Image WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OpenMore"/>
+                    </VerticalStackLayout.GestureRecognizers>
+                    <Image Source="more.svg" WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
                     <Label Text="Więcej"
                            FontSize="11"
                            TextColor="{StaticResource CharcoalBrown}"
