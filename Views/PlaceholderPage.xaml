@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mUczen.Views.PlaceholderPage">
+
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
+        <Label x:Name="SectionTitleLabel" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center"/>
+        <Label Text="Ta sekcja jest w budowie." FontSize="14" Opacity="0.65" HorizontalOptions="Center"/>
+    </VerticalStackLayout>
+
+</ContentPage>
