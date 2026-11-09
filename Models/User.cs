@@ -10,6 +10,8 @@ namespace mUczen.Models
         public string? Password { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
+        public string? SchoolName { get; set; }
+        public string? ClassName { get; set; }
         public bool IsAdmin { get; set; }
     }
 }
