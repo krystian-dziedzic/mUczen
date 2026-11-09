@@ -247,7 +247,9 @@
                                 FontAttributes="Bold"
                                 VerticalOptions="Center"
                                 Margin="8,0,14,0">
-                                <!-- TODO: zaimplementować TapGestureRecognizer (TogglePasswordVisibility) -->
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TogglePasswordVisibility"/>
+                                </Label.GestureRecognizers>
                             </Label>
                         </Grid>
                     </Border>
@@ -273,9 +275,10 @@
                                 <Span Text="Utwórz je" FontAttributes="Bold" TextDecorations="Underline"/>
                             </FormattedString>
                         </Label.FormattedText>
-                        <!-- TODO: zaimplementować TapGestureRecognizer (SwitchToRegister) -->
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SwitchToRegister"/>
+                        </Label.GestureRecognizers>
                     </Label>
-
                 </VerticalStackLayout>
             </ScrollView>
         </Grid>
@@ -446,7 +449,9 @@
                                 FontAttributes="Bold"
                                 VerticalOptions="Center"
                                 Margin="8,0,14,0">
-                                <!-- TODO: zaimplementować TapGestureRecognizer (TogglePasswordVisibility) -->
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TogglePasswordVisibility"/>
+                                </Label.GestureRecognizers>
                             </Label>
                         </Grid>
                     </Border>
@@ -478,7 +483,9 @@
                                 <Span Text="Zaloguj się" FontAttributes="Bold" TextDecorations="Underline"/>
                             </FormattedString>
                         </Label.FormattedText>
-                        <!-- TODO: zaimplementować TapGestureRecognizer (SwitchToLogin) -->
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SwitchToLogin"/>
+                        </Label.GestureRecognizers>
                     </Label>
 
                 </VerticalStackLayout>
