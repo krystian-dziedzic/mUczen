@@ -2,6 +2,8 @@
 using mUczen.Models;
 using SQLite;
 using Microsoft.AspNetCore.Identity;
+using System.Linq;
+
 namespace mUczen.Views
 {
     public partial class LoginPage : ContentPage
@@ -137,9 +139,45 @@ namespace mUczen.Views
             else if (sender == CreateAccountPasswordEntry)
                 CreateAccountButtonClicked(sender, e);
         }
-        private void CreateAccountButtonClicked(object sender, EventArgs e)
+
+        private async void CreateAccountButtonClicked(object sender, EventArgs e)
         {
-            // REJESTRACJA
+            if (string.IsNullOrWhiteSpace(CreateAccountFirstName.Text) ||
+                string.IsNullOrWhiteSpace(CreateAccountLastName.Text) ||
+                string.IsNullOrWhiteSpace(CreateAccountStudentIdCardEntry.Text) ||
+                string.IsNullOrWhiteSpace(CreateAccountPasswordEntry.Text))
+            {
+                await DisplayAlertAsync("Błąd", "Proszę wypełnić wszystkie pola.", "OK");
+                return;
+            }
+
+            if (CreateAccountPasswordEntry.Text.Length < 8)
+            {
+                await DisplayAlertAsync("Błąd", "Hasło powinno mieć co najmniej 8 znaków.", "OK");
+                return;
+            }
+
+            bool exists = Database.Connection.Table<User>()
+                .Any(u => u.StudentIdCard == CreateAccountStudentIdCardEntry.Text);
+
+            if (exists)
+            {
+                await DisplayAlertAsync("Błąd", "Konto z tym numerem legitymacji już istnieje.", "OK");
+                return;
+            }
+
+            var user = new User
+            {
+                FirstName = CreateAccountFirstName.Text,
+                LastName = CreateAccountLastName.Text,
+                StudentIdCard = CreateAccountStudentIdCardEntry.Text
+            };
+            user.Password = Database.hasher.HashPassword(user, CreateAccountPasswordEntry.Text);
+
+            Database.Connection.Insert(user);
+
+            Session.CurrentUser = user;
+            await Shell.Current.GoToAsync("//MainPage");
         }
 
         private async void LoginButtonClicked(object sender, EventArgs e)
@@ -149,6 +187,21 @@ namespace mUczen.Views
                 await DisplayAlertAsync("Błąd", "Proszę wypełnić wszystkie pola.", "OK");
                 return;
             }
+
+            var user = Database.Connection.Table<User>()
+                .FirstOrDefault(u => u.StudentIdCard == StudentIdCardEntry.Text);
+
+            bool valid = user != null &&
+                Database.hasher.VerifyHashedPassword(user, user.Password!, PasswordEntry.Text) != PasswordVerificationResult.Failed;
+
+            if (!valid)
+            {
+                await DisplayAlertAsync("Błąd", "Nieprawidłowy numer legitymacji lub hasło.", "OK");
+                return;
+            }
+
+            Session.CurrentUser = user;
+            await Shell.Current.GoToAsync("//MainPage");
         }
     }
 }
