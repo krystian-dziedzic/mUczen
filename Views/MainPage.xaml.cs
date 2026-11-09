@@ -16,6 +16,8 @@ public partial class MainPage : ContentPage
         if (Session.CurrentUser is { } user)
         {
             UserFirstName.Text = $"{user.FirstName}!";
+            CardFullNameLabel.Text = $"{user.FirstName} {user.LastName}";
+            CardStudentIdLabel.Text = user.StudentIdCard;
         }
     }
 
