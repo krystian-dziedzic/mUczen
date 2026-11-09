@@ -61,7 +61,7 @@
 
                             <Label Text="Legitymacja uczniowska" FontSize="Medium"/>
                             <Label x:Name="CardFullNameLabel" Text="Wojciech Kapera" FontSize="Large" FontAttributes="Bold"/>
-                            <Label Text="Zespół szkół technicznych"/>
+                            <Label x:Name="CardSchoolLabel" Text="Zespół szkół technicznych"/>
                             <Label Text="Nr legitymacji:"/>
                             <Label x:Name="CardStudentIdLabel" Text="213769420"/>
 

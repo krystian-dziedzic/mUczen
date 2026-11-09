@@ -364,7 +364,56 @@
                             ReturnType="Next"
                             Completed="EntryCompleted"/>
                     </Border>
+                    <Label
+                        Text="Szkoła"
+                        TextColor="White"
+                        FontSize="13"
+                        Opacity="0.85"
+                        Margin="4,6,0,0"/>
+                    <Border
+                        WidthRequest="300"
+                        HeightRequest="52"
+                        BackgroundColor="White"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12">
+                        <Entry
+                            x:Name="CreateAccountSchoolName"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource CharcoalBrown}"
+                            PlaceholderColor="Grey"
+                            VerticalOptions="Center"
+                            Margin="12,0,0,0"
+                            Keyboard="Text"
+                            Placeholder="Nazwa szkoły"
+                            ReturnType="Next"
+                            Completed="EntryCompleted"/>
+                    </Border>
 
+                    <Label
+                        Text="Klasa"
+                        TextColor="White"
+                        FontSize="13"
+                        Opacity="0.85"
+                        Margin="4,6,0,0"/>
+                    <Border
+                        WidthRequest="300"
+                        HeightRequest="52"
+                        BackgroundColor="White"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12">
+                        <Entry
+                            x:Name="CreateAccountClassName"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource CharcoalBrown}"
+                            PlaceholderColor="Grey"
+                            VerticalOptions="Center"
+                            Margin="12,0,0,0"
+                            Keyboard="Text"
+                            Placeholder="np. 4TPa"
+                            ReturnType="Next"
+                            Completed="EntryCompleted"/>
+                    </Border>
+                    
                     <Label
                         Text="Nazwisko"
                         TextColor="White"
