@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mUczen.Views.MorePage"
+             Title="Więcej">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Label x:Name="AccountInfoLabel" FontSize="16" Opacity="0.7"/>
+        <Button Text="Wyloguj się"
+                BackgroundColor="{StaticResource Cerulean}"
+                TextColor="White"
+                CornerRadius="12"
+                HeightRequest="52"
+                Clicked="LogoutClicked"/>
+    </VerticalStackLayout>
+</ContentPage>
