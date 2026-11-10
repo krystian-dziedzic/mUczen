@@ -22,7 +22,6 @@ public partial class MainPage : ContentPage
             CardStudentIdLabel.Text = user.StudentIdCard;
         }
     }
-
     private async void OpenGrades(object sender, TappedEventArgs e) => await Navigation.PushAsync(new PlaceholderPage("Oceny"));
     private async void OpenAttendance(object sender, TappedEventArgs e) => await Navigation.PushAsync(new PlaceholderPage("Frekwencja"));
     private async void OpenSchedule(object sender, TappedEventArgs e) => await Navigation.PushAsync(new PlaceholderPage("Plan lekcji"));
