@@ -135,6 +135,10 @@ namespace mUczen.Views
             else if (sender == CreateAccountLastName)
                 CreateAccountStudentIdCardEntry.Focus();
             else if (sender == CreateAccountStudentIdCardEntry)
+                CreateAccountSchoolName.Focus();
+            else if (sender == CreateAccountSchoolName)
+                CreateAccountClassName.Focus();
+            else if (sender == CreateAccountClassName)
                 CreateAccountPasswordEntry.Focus();
             else if (sender == CreateAccountPasswordEntry)
                 CreateAccountButtonClicked(sender, e);
@@ -144,6 +148,8 @@ namespace mUczen.Views
         {
             if (string.IsNullOrWhiteSpace(CreateAccountFirstName.Text) ||
                 string.IsNullOrWhiteSpace(CreateAccountLastName.Text) ||
+                string.IsNullOrWhiteSpace(CreateAccountSchoolName.Text) ||
+                string.IsNullOrWhiteSpace(CreateAccountClassName.Text) ||
                 string.IsNullOrWhiteSpace(CreateAccountStudentIdCardEntry.Text) ||
                 string.IsNullOrWhiteSpace(CreateAccountPasswordEntry.Text))
             {
@@ -170,7 +176,10 @@ namespace mUczen.Views
             {
                 FirstName = CreateAccountFirstName.Text,
                 LastName = CreateAccountLastName.Text,
-                StudentIdCard = CreateAccountStudentIdCardEntry.Text
+                SchoolName = CreateAccountSchoolName.Text,
+                ClassName = CreateAccountClassName.Text,
+                StudentIdCard = CreateAccountStudentIdCardEntry.Text,
+                IsAdmin = !Database.Connection.Table<User>().Any()
             };
             user.Password = Database.hasher.HashPassword(user, CreateAccountPasswordEntry.Text);
 

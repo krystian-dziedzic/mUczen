@@ -7,11 +7,10 @@
 
     <Grid RowDefinitions="*,Auto">
 
-        <!-- CONTENT -->
         <ScrollView Grid.Row="0">
             <VerticalStackLayout Spacing="10">
 
-                <!-- HEADER ( PLACEHOLDER DATA ) -->
+                <!-- PLACEHOLDER DATA -->
                 <Grid ColumnDefinitions="*,Auto" Padding="20,20,20,0">
                     <VerticalStackLayout Grid.Column="0">
                         <Label Text="Cześć," FontSize="Large"/>
@@ -30,7 +29,7 @@
                            WidthRequest="100"/>
                 </Grid>
 
-                <!-- STUDENT ID CARD ( PLACEHOLDER DATA ) -->
+                <!-- STUDENT ID CARD -->
                 <Border Margin="20,0"
                         Stroke="{StaticResource CharcoalBrown}"
                         StrokeShape="RoundRectangle 20"
@@ -43,27 +42,39 @@
                             Offset="0,8"/>
                     </Border.Shadow>
                     <Grid ColumnDefinitions="Auto,*"
-                          RowDefinitions="Auto, *"
+                          RowDefinitions="Auto,Auto"
                           RowSpacing="16"
                           ColumnSpacing="16"
-                          Padding="16"
-                          HeightRequest="230">
+                          Padding="16">
 
                         <Border Grid.Column="0"
+                                Grid.Row="0"
+                                WidthRequest="90"
+                                HeightRequest="90"
                                 StrokeShape="RoundRectangle 10"
-                                VerticalOptions="Center">
-                            <Image Source="avatar_placeholder.svg" MaximumHeightRequest="150"/>
+                                VerticalOptions="Start">
+                            <Image Source="avatar_placeholder.svg" Aspect="AspectFit"/>
                         </Border>
 
                         <VerticalStackLayout Grid.Column="1"
-                                             Spacing="10"
-                                             VerticalOptions="Center">
+                                             Grid.Row="0"
+                                             Spacing="6"
+                                             VerticalOptions="Start">
 
-                            <Label Text="Legitymacja uczniowska" FontSize="Medium"/>
-                            <Label x:Name="CardFullNameLabel" Text="Wojciech Kapera" FontSize="Large" FontAttributes="Bold"/>
-                            <Label x:Name="CardSchoolLabel" Text="Zespół szkół technicznych"/>
-                            <Label Text="Nr legitymacji:"/>
-                            <Label x:Name="CardStudentIdLabel" Text="213769420"/>
+                            <Label Text="Legitymacja uczniowska" FontSize="Small" Opacity="0.7"/>
+                            <Label x:Name="CardFullNameLabel"
+                                   Text="Wojciech Kapera"
+                                   FontSize="Medium"
+                                   FontAttributes="Bold"
+                                   LineBreakMode="TailTruncation"/>
+                            <Label x:Name="CardSchoolLabel"
+                                   Text="Zespół szkół technicznych"
+                                   FontSize="Small"
+                                   LineBreakMode="TailTruncation"/>
+                            <Label x:Name="CardStudentIdLabel"
+                                   Text="Nr legitymacji: 213769420"
+                                   FontSize="Small"
+                                   LineBreakMode="TailTruncation"/>
 
                         </VerticalStackLayout>
 
@@ -71,6 +82,7 @@
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
                             Grid.Row="1"
+                            Padding="8"
                             StrokeShape="RoundRectangle 10">
                             <Label
                                 HorizontalOptions="Center"
@@ -79,7 +91,7 @@
                         </Border>
                     </Grid>
                 </Border>
-                <!-- GRID MENU BUTTONS -->
+
                 <Grid
                     ColumnDefinitions="*, *, *"
                     RowDefinitions="*, *"
@@ -253,7 +265,7 @@
                     </Border>
                 </Grid>
 
-                <!-- UPCOMING WIDGET ( PLACEHOLDER DATA ) -->
+                <!-- PLACEHOLDER DATA -->
                 <Border Margin="20,0,20,20"
                         Padding="16"
                         Stroke="{StaticResource CharcoalBrown}"
@@ -273,7 +285,6 @@
                                FontSize="Medium"
                                FontAttributes="Bold"/>
 
-                        <!-- ITEM: NEXT LESSON -->
                         <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
                             <BoxView Grid.Column="0"
                                      WidthRequest="4"
@@ -291,7 +302,6 @@
 
                         <BoxView HeightRequest="1" Color="{StaticResource CharcoalBrown}" Opacity="0.15"/>
 
-                        <!-- ITEM: TEST -->
                         <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
                             <BoxView Grid.Column="0"
                                      WidthRequest="4"
@@ -309,7 +319,6 @@
 
                         <BoxView HeightRequest="1" Color="{StaticResource CharcoalBrown}" Opacity="0.15"/>
 
-                        <!-- ITEM: HOMEWORK -->
                         <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
                             <BoxView Grid.Column="0"
                                      WidthRequest="4"
@@ -331,7 +340,6 @@
             </VerticalStackLayout>
         </ScrollView>
 
-        <!-- DOCK -->
         <Border Grid.Row="1"
                 BackgroundColor="{StaticResource Porcelain}"
                 StrokeThickness="0"
@@ -347,7 +355,6 @@
 
             <Grid ColumnDefinitions="*,*,*,*,*">
 
-                <!-- HOME ( SELECTED ) -->
                 <VerticalStackLayout Grid.Column="0" Spacing="4" HorizontalOptions="Center">
                     <Image Source="home.svg" WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
                     <Label Text="Główna"
@@ -358,7 +365,6 @@
                            LineBreakMode="NoWrap"/>
                 </VerticalStackLayout>
 
-                <!-- GRADES -->
                 <VerticalStackLayout Grid.Column="1" Spacing="4" HorizontalOptions="Center">
                     <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OpenGrades"/>
@@ -372,7 +378,6 @@
                            LineBreakMode="NoWrap"/>
                 </VerticalStackLayout>
 
-                <!-- TIMETABLE -->
                 <VerticalStackLayout Grid.Column="2" Spacing="4" HorizontalOptions="Center">
                     <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OpenSchedule"/>
@@ -386,7 +391,6 @@
                            LineBreakMode="NoWrap"/>
                 </VerticalStackLayout>
 
-                <!-- HOMEWORK -->
                 <VerticalStackLayout Grid.Column="3" Spacing="4" HorizontalOptions="Center">
                     <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OpenHomework"/>
@@ -400,7 +404,6 @@
                            LineBreakMode="NoWrap"/>
                 </VerticalStackLayout>
 
-                <!-- MORE -->
                 <VerticalStackLayout Grid.Column="4" Spacing="4" HorizontalOptions="Center">
                     <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OpenMore"/>
