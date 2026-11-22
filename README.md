@@ -61,13 +61,13 @@ Baza SQLite tworzy się automatycznie przy pierwszym uruchomieniu w katalogu dan
 
 ## Zrzuty ekranu
 
-| Logowanie | Strona główna | Legitymacja |
+| Logowanie | Rejestracja | Legitymacja |
 |---|---|---|
-| ![Logowanie](Docs/screenshots/login.png) | ![Strona główna](Docs/screenshots/main.png) | ![Legitymacja](Docs/screenshots/card.png) |
+| ![Logowanie](Docs/Screenshots/login.png) | ![Rejestracja](Docs/Screenshots/create_account.png) | ![Legitymacja](Docs/Screenshots/card.png) |
 
-| Oceny | Plan lekcji | Panel administratora |
+| Oceny | Strona główna | Panel administratora |
 |---|---|---|
-| ![Oceny](Docs/screenshots/grades.png) | ![Plan lekcji](Docs/screenshots/schedule.png) | ![Panel administratora](Docs/screenshots/admin.png) |
+| ![Oceny](Docs/Screenshots/grades.png) | ![Strona główna](Docs/Screenshots/main.png) | ![Panel administratora](Docs/Screenshots/admin.png) |
 
 ## Licencja
 
