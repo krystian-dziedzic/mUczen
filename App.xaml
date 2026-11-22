@@ -7,9 +7,15 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-                <!-- DEFAULT STYLES -->
                 <!-- <ResourceDictionary Source="Resources/Styles/Styles.xaml" /> -->
             </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource CharcoalBrown}" />
+            </Style>
+            <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="{StaticResource Porcelain}" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

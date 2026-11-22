@@ -5,6 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:mUczen"
     xmlns:views="clr-namespace:mUczen.Views"
+    Shell.BackgroundColor="{StaticResource Porcelain}"
+    Shell.ForegroundColor="{StaticResource Cerulean}"
+    Shell.TitleColor="{StaticResource CharcoalBrown}"
     Title="mUczen">
 
     <ShellContent
