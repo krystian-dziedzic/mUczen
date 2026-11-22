@@ -170,7 +170,8 @@ namespace mUczen.Views
             {
                 FirstName = CreateAccountFirstName.Text,
                 LastName = CreateAccountLastName.Text,
-                StudentIdCard = CreateAccountStudentIdCardEntry.Text
+                StudentIdCard = CreateAccountStudentIdCardEntry.Text,
+                IsAdmin = !Database.Connection.Table<User>().Any()
             };
             user.Password = Database.hasher.HashPassword(user, CreateAccountPasswordEntry.Text);
 
