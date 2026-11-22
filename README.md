@@ -63,7 +63,7 @@ Baza SQLite tworzy się automatycznie przy pierwszym uruchomieniu w katalogu dan
 
 <p align="center">
   <img src="Docs/Screenshots/login.png" width="240" alt="Logowanie" title="Logowanie" />
-  <img src="Docs/Screenshots/login.png" width="240" alt="Rejestracja" title="Rejestracja" />
+  <img src="Docs/Screenshots/create_account.png" width="240" alt="Rejestracja" title="Rejestracja" />
   <img src="Docs/Screenshots/grades.png" width="240" alt="Oceny" title="Oceny" />
   <img src="Docs/Screenshots/main.png" width="240" alt="StronaGlowna" title="StronaGlowna" />
   <img src="Docs/Screenshots/admin.png" width="240" alt="PanelAdmina" title="PanelAdmina" />
