@@ -7,6 +7,7 @@ namespace mUczen
         public App()
         {
             InitializeComponent();
+            UserAppTheme = AppTheme.Light;
             mUczen.Services.Database.Initialize();
         }
 

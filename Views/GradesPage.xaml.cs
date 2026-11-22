@@ -79,13 +79,31 @@ public partial class GradesPage : ContentPage
             row.Add(subjectLabel, 1);
             row.Add(averageLabel, 2);
 
+            var chips = new FlexLayout { Wrap = Microsoft.Maui.Layouts.FlexWrap.Wrap };
+            foreach (var g in grades.Where(x => x.Subject == subject).OrderBy(x => x.Date))
+            {
+                chips.Children.Add(new Border
+                {
+                    Padding = new Thickness(12, 6),
+                    Margin = new Thickness(0, 0, 6, 6),
+                    BackgroundColor = Colors.White,
+                    Stroke = (Color)Application.Current!.Resources["CharcoalBrown"],
+                    StrokeShape = new Microsoft.Maui.Controls.Shapes.RoundRectangle { CornerRadius = 10 },
+                    Content = new Label
+                    {
+                        Text = g.Value.ToString("0.##"),
+                        FontAttributes = FontAttributes.Bold
+                    }
+                });
+            }
+
             var card = new Border
             {
                 Padding = 16,
                 Stroke = (Color)Application.Current!.Resources["CharcoalBrown"],
                 BackgroundColor = (Color)Application.Current!.Resources["Porcelain"],
                 StrokeShape = new Microsoft.Maui.Controls.Shapes.RoundRectangle { CornerRadius = 16 },
-                Content = row
+                Content = new VerticalStackLayout { Spacing = 10, Children = { row, chips } }
             };
 
             GradesList.Children.Add(card);
