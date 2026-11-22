@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mUczen.Views.AttendancePage"
+             Title="Frekwencja">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="20">
+
+        <Label Grid.Row="0" Text="Twoja frekwencja" FontSize="22" FontAttributes="Bold" Margin="0,10,0,10"/>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout x:Name="AttendanceList" Spacing="10"/>
+        </ScrollView>
+
+        <Border Grid.Row="2"
+                Padding="16"
+                Margin="0,10,0,0"
+                Stroke="{StaticResource CharcoalBrown}"
+                BackgroundColor="{StaticResource Porcelain}"
+                StrokeShape="RoundRectangle 16">
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Grid.Column="0" Text="Obecność" FontSize="Medium"/>
+                <Label Grid.Column="1" x:Name="AttendancePercentLabel" Text="-" FontSize="Medium" FontAttributes="Bold"/>
+            </Grid>
+        </Border>
+
+    </Grid>
+</ContentPage>

@@ -2,40 +2,18 @@ using mUczen.Services;
 
 namespace mUczen.Views;
 
-public class MorePage : ContentPage
+public partial class MorePage : ContentPage
 {
-    private readonly VerticalStackLayout _menu = new() { Spacing = 10 };
-
     public MorePage()
     {
-        Title = "Więcej";
-
-        var grid = new Grid
-        {
-            Padding = new Thickness(20),
-            RowDefinitions =
-            {
-                new RowDefinition(GridLength.Auto),
-                new RowDefinition(GridLength.Star)
-            }
-        };
-        grid.Add(new Label
-        {
-            Text = "Więcej",
-            FontSize = 22,
-            FontAttributes = FontAttributes.Bold,
-            Margin = new Thickness(0, 10, 0, 10)
-        }, 0, 0);
-        grid.Add(new ScrollView { Content = _menu }, 0, 1);
-
-        Content = grid;
+        InitializeComponent();
     }
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
 
-        _menu.Children.Clear();
+        MenuList.Children.Clear();
 
         if (Session.CurrentUser?.IsAdmin == true)
         {
@@ -44,9 +22,9 @@ public class MorePage : ContentPage
                 () => Navigation.PushAsync(new AdminPage()));
         }
 
-        if (_menu.Children.Count == 0)
+        if (MenuList.Children.Count == 0)
         {
-            _menu.Children.Add(new Label
+            MenuList.Children.Add(new Label
             {
                 Text = "Brak dodatkowych opcji.",
                 Opacity = 0.6,
@@ -66,8 +44,8 @@ public class MorePage : ContentPage
             ColumnSpacing = 12,
             ColumnDefinitions =
             {
-                new ColumnDefinition(GridLength.Star),
-                new ColumnDefinition(GridLength.Auto)
+                new ColumnDefinition { Width = GridLength.Star },
+                new ColumnDefinition { Width = GridLength.Auto }
             }
         };
         row.Add(texts, 0);
@@ -92,6 +70,12 @@ public class MorePage : ContentPage
         tap.Tapped += async (_, _) => await onTap();
         card.GestureRecognizers.Add(tap);
 
-        _menu.Children.Add(card);
+        MenuList.Children.Add(card);
+    }
+
+    private async void LogoutClicked(object sender, EventArgs e)
+    {
+        Session.CurrentUser = null;
+        await Shell.Current.GoToAsync("//LoginPage");
     }
 }
