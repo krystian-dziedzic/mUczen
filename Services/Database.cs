@@ -18,6 +18,8 @@ namespace mUczen.Services
             Connection.CreateTable<Attendance>();
             Connection.CreateTable<User>();
             Connection.CreateTable<ClassSubject>();
+            Connection.CreateTable<Homework>();
+            Connection.CreateTable<Announcement>();
         }
         public static PasswordHasher<User> hasher = new PasswordHasher<User>();
     }

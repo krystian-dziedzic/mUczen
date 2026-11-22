@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mUczen.Views.MorePage"
+             Title="Więcej">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="20">
+        <Label Grid.Row="0" Text="Więcej" FontSize="22" FontAttributes="Bold" Margin="0,10,0,10"/>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout x:Name="MenuList" Spacing="10"/>
+        </ScrollView>
+
+        <Button Grid.Row="2"
+                Text="Wyloguj się"
+                BackgroundColor="{StaticResource Cerulean}"
+                TextColor="White"
+                CornerRadius="12"
+                HeightRequest="52"
+                Margin="0,10,0,0"
+                Clicked="LogoutClicked"/>
+    </Grid>
+</ContentPage>

@@ -11,5 +11,7 @@ namespace mUczen.Models
         public DayOfWeek DayOfWeek { get; set; }
         public TimeSpan Duration { get; set; }
         public string? Teacher { get; set; }
+        public string? SchoolName { get; internal set; }
+        public string? ClassName { get; internal set; }
     }
 }
