@@ -67,8 +67,11 @@ public partial class SchedulePage : ContentPage
             return;
 
         var lessons = Database.Connection.Table<Lesson>()
-            .Where(l => l.DayOfWeek == _selectedDay && l.SchoolName == user.SchoolName && l.ClassName == user.ClassName)
             .ToList()
+            .Where(l =>
+                l.DayOfWeek == _selectedDay &&
+                l.SchoolName == user.SchoolName &&
+                l.ClassName == user.ClassName)
             .OrderBy(l => l.Duration)
             .ToList();
 
