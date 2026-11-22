@@ -17,6 +17,7 @@ namespace mUczen.Services
             Connection.CreateTable<Lesson>();
             Connection.CreateTable<Attendance>();
             Connection.CreateTable<User>();
+            Connection.CreateTable<ClassSubject>();
             Connection.CreateTable<Homework>();
             Connection.CreateTable<Announcement>();
         }

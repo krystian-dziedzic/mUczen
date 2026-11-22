@@ -4,13 +4,20 @@
              x:Class="mUczen.Views.MorePage"
              Title="Więcej">
 
-    <VerticalStackLayout Padding="20" Spacing="15">
-        <Label x:Name="AccountInfoLabel" FontSize="16" Opacity="0.7"/>
-        <Button Text="Wyloguj się"
+    <Grid RowDefinitions="Auto,*,Auto" Padding="20">
+        <Label Grid.Row="0" Text="Więcej" FontSize="22" FontAttributes="Bold" Margin="0,10,0,10"/>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout x:Name="MenuList" Spacing="10"/>
+        </ScrollView>
+
+        <Button Grid.Row="2"
+                Text="Wyloguj się"
                 BackgroundColor="{StaticResource Cerulean}"
                 TextColor="White"
                 CornerRadius="12"
                 HeightRequest="52"
+                Margin="0,10,0,0"
                 Clicked="LogoutClicked"/>
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>

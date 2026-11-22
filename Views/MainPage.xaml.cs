@@ -19,9 +19,10 @@ public partial class MainPage : ContentPage
             UserClassName.Text = user.ClassName;
             CardFullNameLabel.Text = $"{user.FirstName} {user.LastName}";
             CardSchoolLabel.Text = user.SchoolName;
-            CardStudentIdLabel.Text = user.StudentIdCard;
+            CardStudentIdLabel.Text = $"Nr legitymacji: {user.StudentIdCard}";
         }
     }
+
     private async void OpenGrades(object sender, TappedEventArgs e) => await Navigation.PushAsync(new GradesPage());
     private async void OpenAttendance(object sender, TappedEventArgs e) => await Navigation.PushAsync(new AttendancePage());
     private async void OpenSchedule(object sender, TappedEventArgs e) => await Navigation.PushAsync(new SchedulePage());
