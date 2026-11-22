@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mUczen.Views.AdminPage"
+             Title="Panel administratora">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Padding="0,0,0,20">
+
+            <Grid ColumnDefinitions="*,Auto" Padding="20,20,20,0">
+                <VerticalStackLayout Grid.Column="0">
+                    <Label Text="Panel" FontSize="Large"/>
+                    <Label Text="administratora" FontSize="Large" FontAttributes="Bold"/>
+                    <Label x:Name="AdminNameLabel" FontSize="Medium"/>
+                </VerticalStackLayout>
+
+                <Image Grid.Column="1"
+                       Source="student_logo_placeholder.png"
+                       HeightRequest="100"
+                       WidthRequest="100"/>
+            </Grid>
+
+            <Border Margin="20,0"
+                    Padding="16"
+                    Stroke="{StaticResource CharcoalBrown}"
+                    BackgroundColor="{StaticResource Porcelain}"
+                    StrokeShape="RoundRectangle 20">
+                <Border.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Opacity="0.10"
+                        Radius="20"
+                        Offset="0,8"/>
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Podsumowanie"
+                           FontSize="Medium"
+                           FontAttributes="Bold"/>
+
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Grid.Column="0" Text="Użytkownicy"/>
+                    <Label Grid.Column="1" x:Name="UsersCountLabel" Text="0" FontAttributes="Bold"/>
+                </Grid>
+
+                <BoxView HeightRequest="1" Color="{StaticResource CharcoalBrown}" Opacity="0.15"/>
+
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Grid.Column="0" Text="Przedmioty"/>
+                    <Label Grid.Column="1" x:Name="SubjectsCountLabel" Text="0" FontAttributes="Bold"/>
+                </Grid>
+
+                <BoxView HeightRequest="1" Color="{StaticResource CharcoalBrown}" Opacity="0.15"/>
+
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Grid.Column="0" Text="Oceny"/>
+                    <Label Grid.Column="1" x:Name="GradesCountLabel" Text="0" FontAttributes="Bold"/>
+                </Grid>
+
+                <BoxView HeightRequest="1" Color="{StaticResource CharcoalBrown}" Opacity="0.15"/>
+
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Grid.Column="0" Text="Lekcje"/>
+                    <Label Grid.Column="1" x:Name="LessonsCountLabel" Text="0" FontAttributes="Bold"/>
+                </Grid>
+
+                <BoxView HeightRequest="1" Color="{StaticResource CharcoalBrown}" Opacity="0.15"/>
+
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Grid.Column="0" Text="Wpisy frekwencji"/>
+                    <Label Grid.Column="1" x:Name="AttendanceCountLabel" Text="0" FontAttributes="Bold"/>
+                </Grid>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <Grid
+                ColumnDefinitions="*, *"
+                RowDefinitions="*, *, *"
+                Margin="20,0"
+                RowSpacing="10"
+                ColumnSpacing="10">
+            <Border
+                Grid.Column="0"
+                Grid.Row="0"
+                Stroke="{StaticResource CharcoalBrown}"
+                BackgroundColor="{StaticResource Porcelain}"
+                StrokeShape="RoundRectangle 20">
+                <Border.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Opacity="0.10"
+                        Radius="20"
+                        Offset="0,8"/>
+                </Border.Shadow>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OpenUsers"/>
+                </Border.GestureRecognizers>
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10" Margin="10">
+                    <Image Source="avatar_placeholder.svg"
+                        HeightRequest="70"
+                        WidthRequest="70"/>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Użytkownicy"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        LineBreakMode="NoWrap"/>
+                </VerticalStackLayout>
+            </Border>
+            <Border
+                Grid.Column="1"
+                Grid.Row="0"
+                Stroke="{StaticResource CharcoalBrown}"
+                BackgroundColor="{StaticResource Porcelain}"
+                StrokeShape="RoundRectangle 20">
+                <Border.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Opacity="0.10"
+                        Radius="20"
+                        Offset="0,8"/>
+                </Border.Shadow>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OpenSubjects"/>
+                </Border.GestureRecognizers>
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10" Margin="10">
+                    <Image Source="homework.svg"
+                        HeightRequest="70"
+                        WidthRequest="70"/>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Przedmioty"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        LineBreakMode="NoWrap"/>
+                </VerticalStackLayout>
+            </Border>
+            <Border
+                Grid.Column="0"
+                Grid.Row="1"
+                Stroke="{StaticResource CharcoalBrown}"
+                BackgroundColor="{StaticResource Porcelain}"
+                StrokeShape="RoundRectangle 20">
+                <Border.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Opacity="0.10"
+                        Radius="20"
+                        Offset="0,8"/>
+                </Border.Shadow>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OpenGrades"/>
+                </Border.GestureRecognizers>
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10" Margin="10">
+                    <Image Source="grades.svg"
+                        HeightRequest="70"
+                        WidthRequest="70"/>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Oceny"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        LineBreakMode="NoWrap"/>
+                </VerticalStackLayout>
+            </Border>
+            <Border
+                Grid.Column="1"
+                Grid.Row="1"
+                Stroke="{StaticResource CharcoalBrown}"
+                BackgroundColor="{StaticResource Porcelain}"
+                StrokeShape="RoundRectangle 20">
+                <Border.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Opacity="0.10"
+                        Radius="20"
+                        Offset="0,8"/>
+                </Border.Shadow>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OpenLessons"/>
+                </Border.GestureRecognizers>
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10" Margin="10">
+                    <Image Source="lessons.svg"
+                        HeightRequest="70"
+                        WidthRequest="70"/>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Plan lekcji"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        LineBreakMode="NoWrap"/>
+                </VerticalStackLayout>
+            </Border>
+            <Border
+                Grid.Column="0"
+                Grid.Row="2"
+                Stroke="{StaticResource CharcoalBrown}"
+                BackgroundColor="{StaticResource Porcelain}"
+                StrokeShape="RoundRectangle 20">
+                <Border.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Opacity="0.10"
+                        Radius="20"
+                        Offset="0,8"/>
+                </Border.Shadow>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OpenAttendance"/>
+                </Border.GestureRecognizers>
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10" Margin="10">
+                    <Image Source="abscence.svg"
+                        HeightRequest="70"
+                        WidthRequest="70"/>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Frekwencja"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        LineBreakMode="NoWrap"/>
+                </VerticalStackLayout>
+            </Border>
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
